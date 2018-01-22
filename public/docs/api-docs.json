@@ -1,0 +1,19 @@
+{
+    "swagger": "2.0",
+    "paths": {
+        "/api/phone/": {
+            "get": {
+                "summary": "\u96fb\u8a71\u756a\u53f7\u4e00\u89a7\u8868\u793a",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

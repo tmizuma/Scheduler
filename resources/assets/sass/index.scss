@@ -1,0 +1,50 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.margin_top_20 {
+  margin-top: 20px;
+}
+
+.hubot-alert {
+  display: none;
+  z-index: 999;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.index {
+  width: 100%;
+  height: 100%;
+  .main_color {
+    background-color: #ecf0f5;
+  }
+
+  .color_admin_left {
+    background-color: #222d32;
+
+    .item {
+      width: 100%;
+      margin: 20px 0px 20px 0px;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .height_100 {
+    height: 100%;
+  }
+  .btn_right {
+    float: right;
+  }
+}
+
