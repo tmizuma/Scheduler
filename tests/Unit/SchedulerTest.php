@@ -25,6 +25,7 @@ class SchedulerTest extends TestCase {
      */
     public function testFindTodaySchedule() {
         $target_date = date('Y-m-d');
+        $this->createTargetDateSchedule('1999-01-01', '10:00:00', '11:00:00'); // 対象外日付
         $this->createTargetDateSchedule($target_date, '10:00:00', '11:00:00');
         $response = $this->call('GET', 'api/scheduler/');
         $this->assertEquals($response->getStatusCode(), $this->getStatusCodeOK());
@@ -37,6 +38,7 @@ class SchedulerTest extends TestCase {
      */
     public function testFindTargetDateAndRoomIdSchedule() {
         $target_date = date('Y-m-d');
+        $this->createTargetDateSchedule('1999-01-01', '10:00:00', '11:00:00'); // 対象外日付
         $this->createTargetDateSchedule($target_date, '10:00:00', '11:00:00');
         $response = $this->call('GET', 'api/scheduler/', [
             'yyyy'      => date('Y'),
@@ -107,7 +109,7 @@ class SchedulerTest extends TestCase {
     }
 
     /**
-     * [テスト] 重複するスケジュールが編集ができないこと
+     * [テスト] 重複するようなスケジュールへ編集ができないこと
      */
     public function testUpdateDuplicateSchedule() {
         $target_date = date('Y-m-d');
