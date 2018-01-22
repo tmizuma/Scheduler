@@ -69,9 +69,9 @@ class SchedulerTest extends TestCase {
      * [テスト] 重複するスケジュールは登録できないこと
      */
     public function testCreateDuplicateScheduler() {
-        $count = Scheduler::count();
         $target_date = date('Y-m-d');
         $this->createTargetDateSchedule($target_date, '10:30:00', '11:30:00');
+        $count = Scheduler::count();
         $response = $this->call('POST', 'api/scheduler/', [
             'user_name'    => 'test_user',
             'description'  => 'test_description',
@@ -88,6 +88,7 @@ class SchedulerTest extends TestCase {
      */
     public function testUpdateSchedule() {
         $target_date = date('Y-m-d');
+        $this->createTargetDateSchedule($target_date, '12:00:00', '13:00:00');
         $scheduler = $this->createTargetDateSchedule($target_date, '10:00:00', '11:00:00');
         $response = $this->call('PUT', 'api/scheduler/' . $scheduler->id, [
             'user_name'    => 'updated_test_user',
@@ -100,8 +101,8 @@ class SchedulerTest extends TestCase {
         $updated_scheduler = Scheduler::find($scheduler->id);
         $this->assertEquals($updated_scheduler->user_name, 'updated_test_user');
         $this->assertEquals($updated_scheduler->description, 'updated_test_description');
-        $this->assertEquals($updated_scheduler->start_time, $target_date . '11:00:00');
-        $this->assertEquals($updated_scheduler->end_time, $target_date . '12:00:00');
+        $this->assertEquals($updated_scheduler->start_time, $target_date . ' 11:00:00');
+        $this->assertEquals($updated_scheduler->end_time, $target_date . ' 12:00:00');
         $this->assertEquals($updated_scheduler->room_id, $this->rooms[1]->id);
     }
 
@@ -121,26 +122,11 @@ class SchedulerTest extends TestCase {
         ]);
         $response->assertStatus($this->getStatusCodeOK());
         $updated_scheduler = Scheduler::find($scheduler->id);
-        $this->assertEquals($updated_scheduler->user_name, 'test');
+        $this->assertEquals($updated_scheduler->user_name, 'test_user');
         $this->assertEquals($updated_scheduler->description, 'test_description');
-        $this->assertEquals($updated_scheduler->start_time, $target_date . '11:00:00');
-        $this->assertEquals($updated_scheduler->end_time, $target_date . '12:00:00');
+        $this->assertEquals($updated_scheduler->start_time, $target_date . ' 11:00:00');
+        $this->assertEquals($updated_scheduler->end_time, $target_date . ' 12:00:00');
         $this->assertEquals($updated_scheduler->room_id, $this->rooms[0]->id);
-
-        $response = $this->call('PUT', 'api/scheduler/' . $scheduler->id, [
-            'user_name'    => 'updated_test_user',
-            'description'  => 'updated_test_description',
-            'start_time'   => $target_date . '10:30:00',
-            'end_time'     => $target_date . '11:00:00',
-            'room_id'      => $this->rooms[1]->id // 別の会議室であればOK
-        ]);
-        $response->assertStatus($this->getStatusCodeOK());
-        $updated_scheduler = Scheduler::find($scheduler->id);
-        $this->assertEquals($updated_scheduler->user_name, 'updated_test_user');
-        $this->assertEquals($updated_scheduler->description, 'updated_test_description');
-        $this->assertEquals($updated_scheduler->start_time, $target_date . '10:30:00');
-        $this->assertEquals($updated_scheduler->end_time, $target_date . '11:00:00');
-        $this->assertEquals($updated_scheduler->room_id, $this->rooms[1]->id);
     }
 
     /**

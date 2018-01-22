@@ -32,10 +32,12 @@ class SchedulersService {
 		return $this->schedulersDao->findTargetSchedulersByTargetDateAndRoomId($target_date, $room_id);
 	}
 
-	public function isDuplicate($room_id, $start_time, $end_time, $id = null) {
-		$result = $this->schedulersDao->findTargetSchedulersByTargetPeriodAndRoomId($room_id, $start_time, $end_time, $id);
-		return (!empty($result) && count($result) != 0);
+	public function isStartTimeDuplicate($room_id, $start_time, $end_time, $id = null) {
+		return $this->schedulersDao->isStartTimeDuplicate($room_id, $start_time, $end_time, $id);
+	}
 
+	public function isEndTimeDuplicate($room_id, $start_time, $end_time, $id = null) {
+		return $this->schedulersDao->isEndTimeDuplicate($room_id, $start_time, $end_time, $id);
 	}
 
 	public function findById($id) {

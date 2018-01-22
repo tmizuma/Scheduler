@@ -48,16 +48,8 @@ class SchedulersDao extends BaseDao {
 		return $sql->orderBy('schedulers.start_time')->get();
 	}
 
-	/**
-	 * 期間と会議室で絞る。idの指定がある場合は、対象のidを除去する
-	 * @param $room_id
-	 * @param $start_time
-	 * @param $end_time
-	 * @param null $id
-	 * @return \Illuminate\Support\Collection
-	 */
-	public function findTargetSchedulersByTargetPeriodAndRoomId($room_id, $start_time, $end_time, $id = null) {
-		$sql = $this->table->select('schedulers.*','rooms.name as room_name')
+	public function isStartTimeDuplicate($room_id, $start_time, $end_time, $id = null) {
+		$sql = $this->table
 			->join('rooms', 'rooms.id', '=', 'schedulers.room_id')
 			->whereBetween('schedulers.start_time', [$start_time, $end_time])
 			->whereNull('rooms.deleted_at')
@@ -66,7 +58,19 @@ class SchedulersDao extends BaseDao {
 		if (!empty($id)) {
 			$sql = $sql->where('schedulers.id', '!=', $id);
 		}
-		return $sql->orderBy('schedulers.start_time')->get();
+		return $sql->count() != 0;
 	}
 
+	public function isEndTimeDuplicate($room_id, $start_time, $end_time, $id = null) {
+		$sql = $this->table
+			->join('rooms as r', 'r.id', '=', 'schedulers.room_id')
+			->whereNotBetween('schedulers.end_time', [$start_time, $end_time])
+			->whereNull('r.deleted_at')
+			->whereNull('schedulers.deleted_at')
+			->where('schedulers.room_id', '=', $room_id);
+		if (!empty($id)) {
+			$sql = $sql->where('schedulers.id', '!=', $id);
+		}
+		return $sql->count() != 0;
+	}
 }

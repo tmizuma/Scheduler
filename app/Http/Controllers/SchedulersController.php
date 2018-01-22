@@ -42,11 +42,19 @@ class SchedulersController extends AjaxController {
             'end_time' 	    => ['string','required'],
             'room_id' 		=> ['integer','required']
         ]);
-        if ($this->schedulersService->isDuplicate(
-            $this->request->input('room_id'),
-            $this->request->input('start_time'),
-            $this->request->input('end_time')
-        )) {
+        if (
+            // 開始時間が他の予約と重なってしまっている場合
+            ($this->schedulersService->isStartTimeDuplicate(
+                $this->request->input('room_id'),
+                $this->request->input('start_time'),
+                $this->request->input('end_time')
+            ) ||
+            // 終了時間が他の予約と重なってしまっている場合
+            ($this->schedulersService->isEndTimeDuplicate(
+                $this->request->input('room_id'),
+                $this->request->input('start_time'),
+                $this->request->input('end_time'))
+        ))) {
             $this->data = null;
         } else {
             $this->data = $this->schedulersService->createScheduler([
@@ -67,12 +75,19 @@ class SchedulersController extends AjaxController {
             'end_time' 	    => ['string','required'],
             'room_id' 		=> ['integer','required']
         ]);
-        if ($this->schedulersService->isDuplicate(
-            $this->request->input('room_id'),
-            $this->request->input('start_time'),
-            $this->request->input('end_time'),
-            $id
-        )) {
+        if (
+            // 開始時間が他の予約と重なってしまっている場合
+            ($this->schedulersService->isStartTimeDuplicate(
+                $this->request->input('room_id'),
+                $this->request->input('start_time'),
+                $this->request->input('end_time')
+            ) ||
+            // 終了時間が他の予約と重なってしまっている場合
+            ($this->schedulersService->isEndTimeDuplicate(
+                $this->request->input('room_id'),
+                $this->request->input('start_time'),
+                $this->request->input('end_time'))
+        ))) {
             $this->data = null;
         } else {
             $this->schedulersService->updateScheduler($id, [
