@@ -8,7 +8,7 @@
     <div class="container">
         <h3>電話番号編集登録</h3>
             <div class="form-group">
-                <label class="control-label col-xs-2">窓口<span class="required"> *</span></label>
+                <label class="control-label col-xs-2">会議室名<span class="required"> *</span></label>
                 <div class="col-xs-5">
                     <input type="text" v-model="phone.department" name="name" class="form-control" placeholder="例) 経理部">
                 </div>

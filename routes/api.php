@@ -14,8 +14,6 @@ use Illuminate\Http\Request;
 */
 
 Route::group(['middleware' => 'api'], function() {
-    Route::resource('phone', 'PhoneNumbersController');
-    Route::resource('keyword', 'KeywordController');
-    Route::resource('search/phone', 'PhoneSearchController');
+    Route::resource('scheduler', 'SchedulersController');
 });
 

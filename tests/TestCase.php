@@ -2,8 +2,7 @@
 
 namespace Tests;
 
-use App\Keyword;
-use App\PhoneNumbers;
+use App\Room;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 
@@ -12,31 +11,15 @@ abstract class TestCase extends BaseTestCase {
 
     const HTTP_RESPONSE_CODE_OK = 200;
 
-    protected function createPhoneNumbers( $num ) {
+    protected function createRooms( $num ) {
         $array = [];
         for( $i=0 ; $i<$num ; $i++ ) {
-            $phone = new PhoneNumbers();
-            $phone->department = 'TEST_' .$i;
-            $phone->phone_number = '080-1234-567' . $i;
-            $phone->description = 'description_' .$i;
-            $phone->person_in_charge = 'person_in_charge_' .$i;
-            $phone->save();
-            $array[] =$phone;
+            $room = new Room();
+            $room->name = 'TEST_' .$i;
+            $room->save();
+            $array[] =$room;
         }
         return $array;
-    }
-
-    protected function createPhoneNumbersAndKeywords($phone_num, $keyword_num) {
-        $phones = $this->createPhoneNumbers($phone_num);
-        foreach ($phones as $phone) {
-            $phone_number_id = $phone->id;
-            for($i=1;$i<=$keyword_num;$i++) {
-                $keyword = new Keyword();
-                $keyword->phone_number_id = $phone_number_id;
-                $keyword->keyword = 'keyword_' . $i;
-                $keyword->save();
-            }
-        }
     }
 
     protected function getStatusCodeOK() {

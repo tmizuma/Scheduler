@@ -11,18 +11,18 @@
 </style>
 <template>
 <div class="">
-    <div class="table_panel">電話番号一覧</div>
+    <div class="table_panel">会議室予約一覧</div>
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
-                <th>窓口</th><th>電話番号</th><th>担当者</th><th>詳細</th><th class="text-right">
-                <router-link :to="'/phone/new/'" tag="button" class="btn btn-primary">新規登録</router-link>
+                <th>会議室名</th><th>時間</th><th>予約者</th><th>内容</th><th class="text-right">
+                <router-link :to="'/scheduler/new/'" tag="button" class="btn btn-primary">新規登録</router-link>
             </th>
             </tr>
             </thead>
             <tbody>
-                <phone-component v-for="phone in phonelist" v-bind:key="phone.id" :phone="phone"></phone-component>
+                <scheduler-component v-for="scheduler in schedulerList" v-bind:key="scheduler.id" :scheduler="scheduler"></scheduler-component>
             </tbody>
         </table>
         <div v-show="isLoading">
@@ -34,7 +34,7 @@
 
 <script>
     import LoadingComponent from './LoadingComponent.vue'
-    import PhoneComponent from './PhoneComponent.vue'
+    import schedulerComponent from './SchedulerComponent.vue'
     export default {
         created() {
             this.showLoading()
@@ -43,7 +43,7 @@
         data() {
             return {
                 isLoading: false,
-                phonelist: []
+                schedulerList: []
             }
         },
         methods: {
@@ -51,16 +51,16 @@
                 this.isLoading = true
             },
             load() {
-                axios.get('/api/phone/')
+                axios.get('/api/scheduler/')
                         .then(res =>  {
-                    this.phonelist = res.data['data']
+                    this.schedulerList = res.data['data']
                     this.isLoading = false
                 })
             },
         },
         components: {
             LoadingComponent,
-            PhoneComponent
+            schedulerComponent
         }
     }
 </script>

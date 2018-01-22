@@ -10,7 +10,7 @@ class IndexController extends BaseController {
      }
     
     public function index() {
-        return view('index')->with(['title' => 'Slack Admin']);
+        return view('index')->with(['title' => '会議室予約']);
     }
 
 }
