@@ -271,8 +271,8 @@
                 axios.get('/api/rooms/')
                         .then(res =>  {
                     this.roomList = res.data['data']
-                this.isLoading = false
-            })
+                    this.isLoading = false
+                })
             },
             today() {
                 var now = new Date();

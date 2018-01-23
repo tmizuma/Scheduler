@@ -18,14 +18,16 @@ class SchedulersController extends AjaxController {
     }
 
     public function index() {
-        $yyyy = $this->request->input('yyyy');
-        $mm = $this->request->input('mm');
-        $dd = $this->request->input('dd');
-        $target_date = $yyyy . '-' . $mm . '-' . $dd;
-        if ($target_date == '--') {
+        $this->validate($this->request,[
+            'target_date' 	=> ['string'],
+            'room_id' 	=> ['integer'],
+        ]);
+        $target_date = $this->request->input('target_date');
+        $room_id = $this->request->input('room_id');
+        if (empty($target_date)) {
             $this->data = $this->schedulersService->findSchedulers();
         } else {
-            $this->data = $this->schedulersService->findTargetSchedulersByTargetDateAndRoomId($target_date,  $this->request->input('room_id'));
+            $this->data = $this->schedulersService->findTargetSchedulersByTargetDateAndRoomId($target_date,  $room_id);
         }
         return $this->response();
     }

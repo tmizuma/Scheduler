@@ -41,9 +41,7 @@ class SchedulerTest extends TestCase {
         $this->createTargetDateSchedule('1999-01-01', '10:00:00', '11:00:00'); // 対象外日付
         $this->createTargetDateSchedule($target_date, '10:00:00', '11:00:00');
         $response = $this->call('GET', 'api/scheduler/', [
-            'yyyy'      => date('Y'),
-            'mm'        => date('m'),
-            'dd'        => date('d'),
+            'target_date'      => $target_date,
             'room_id'   => $this->rooms[0]->id
         ]);
         $this->assertEquals($response->getStatusCode(), $this->getStatusCodeOK());
