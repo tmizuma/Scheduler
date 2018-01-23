@@ -789,54 +789,6 @@ function applyToTag (styleElement, obj) {
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(54)
-/* template */
-var __vue_template__ = __webpack_require__(55)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/mixin/Alert.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d0b68a32", Component.options)
-  } else {
-    hotAPI.reload("data-v-d0b68a32", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
  * Vue.js v2.5.9
@@ -11558,10 +11510,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(17).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(17).setImmediate))
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var g;
@@ -11588,7 +11540,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11686,6 +11638,54 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/mixin/Alert.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d0b68a32", Component.options)
+  } else {
+    hotAPI.reload("data-v-d0b68a32", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ }),
 /* 8 */
@@ -12202,7 +12202,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
-module.exports = __webpack_require__(71);
+module.exports = __webpack_require__(68);
 
 
 /***/ }),
@@ -12211,7 +12211,7 @@ module.exports = __webpack_require__(71);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(19);
 
@@ -12227,7 +12227,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__(20);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
-window.Vue = __webpack_require__(5);
+window.Vue = __webpack_require__(4);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -12237,7 +12237,7 @@ window.Vue = __webpack_require__(5);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     mode: 'history',
-    routes: [{ path: '/', component: __webpack_require__(43) }, { path: '/phone/new', component: __webpack_require__(58) }, { path: '/keyword/:id', component: __webpack_require__(63) }, { path: '/phone/edit/:id', component: __webpack_require__(66) }]
+    routes: [{ path: '/', component: __webpack_require__(43) }, { path: '/scheduler/new', component: __webpack_require__(58) }, { path: '/scheduler/edit/:id', component: __webpack_require__(63) }]
 });
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
@@ -12494,7 +12494,7 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(8)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(8)))
 
 /***/ }),
 /* 19 */
@@ -15148,7 +15148,7 @@ window.$ = window.jQuery = __webpack_require__(23);
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = __webpack_require__(5);
+window.Vue = __webpack_require__(4);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -32253,7 +32253,7 @@ window.axios.defaults.headers.common = {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(22)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(22)(module)))
 
 /***/ }),
 /* 22 */
@@ -42559,7 +42559,7 @@ module.exports = __webpack_require__(25);
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(9);
 var Axios = __webpack_require__(27);
-var defaults = __webpack_require__(7);
+var defaults = __webpack_require__(6);
 
 /**
  * Create an instance of Axios
@@ -42642,7 +42642,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(7);
+var defaults = __webpack_require__(6);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(36);
 var dispatchRequest = __webpack_require__(37);
@@ -43183,7 +43183,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(38);
 var isCancel = __webpack_require__(12);
-var defaults = __webpack_require__(7);
+var defaults = __webpack_require__(6);
 var isAbsoluteURL = __webpack_require__(39);
 var combineURLs = __webpack_require__(40);
 
@@ -43452,7 +43452,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-26cd1128"
+var __vue_scopeId__ = "data-v-d8062c0a"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -43463,7 +43463,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/PhoneListComponent.vue"
+Component.options.__file = "resources/assets/js/components/SchedulerListComponent.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -43473,9 +43473,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-26cd1128", Component.options)
+    hotAPI.createRecord("data-v-d8062c0a", Component.options)
   } else {
-    hotAPI.reload("data-v-26cd1128", Component.options)
+    hotAPI.reload("data-v-d8062c0a", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -43496,13 +43496,13 @@ var content = __webpack_require__(45);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("20126963", content, false);
+var update = __webpack_require__(3)("45b30421", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-26cd1128\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./PhoneListComponent.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-26cd1128\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./PhoneListComponent.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d8062c0a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./SchedulerListComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-d8062c0a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./SchedulerListComponent.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -43520,7 +43520,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.table_panel[data-v-26cd1128] {\n    color: #ffffff;\n    background-color: #4582ec;\n    padding: 10px 15px;\n    border-bottom: 1px solid transparent;\n    border-top-right-radius: 3px;\n    border-top-left-radius: 3px;\n    border-color: #4582ec;\n}\n", ""]);
+exports.push([module.i, "\n.table_panel[data-v-d8062c0a] {\n    color: #ffffff;\n    background-color: #4582ec;\n    padding: 10px 15px;\n    border-bottom: 1px solid transparent;\n    border-top-right-radius: 3px;\n    border-top-left-radius: 3px;\n    border-color: #4582ec;\n}\n", ""]);
 
 // exports
 
@@ -43566,8 +43566,8 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__LoadingComponent_vue__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__LoadingComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__LoadingComponent_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PhoneComponent_vue__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__PhoneComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__PhoneComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SchedulerComponent_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SchedulerComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SchedulerComponent_vue__);
 //
 //
 //
@@ -43613,7 +43613,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             isLoading: false,
-            phonelist: []
+            schedulerList: []
         };
     },
 
@@ -43624,15 +43624,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         load: function load() {
             var _this = this;
 
-            axios.get('/api/phone/').then(function (res) {
-                _this.phonelist = res.data['data'];
+            axios.get('/api/scheduler/').then(function (res) {
+                _this.schedulerList = res.data['data'];
                 _this.isLoading = false;
             });
         }
     },
     components: {
         LoadingComponent: __WEBPACK_IMPORTED_MODULE_0__LoadingComponent_vue___default.a,
-        PhoneComponent: __WEBPACK_IMPORTED_MODULE_1__PhoneComponent_vue___default.a
+        schedulerComponent: __WEBPACK_IMPORTED_MODULE_1__SchedulerComponent_vue___default.a
     }
 });
 
@@ -43769,7 +43769,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/PhoneComponent.vue"
+Component.options.__file = "resources/assets/js/components/SchedulerComponent.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -43779,9 +43779,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-73c8d1a6", Component.options)
+    hotAPI.createRecord("data-v-08940bf9", Component.options)
   } else {
-    hotAPI.reload("data-v-73c8d1a6", Component.options)
+    hotAPI.reload("data-v-08940bf9", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -43797,9 +43797,8 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__);
-//
 //
 //
 //
@@ -43817,7 +43816,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['phone'],
+    props: ['scheduler'],
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default.a],
     data: function data() {
         return {
@@ -43833,8 +43832,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return;
             }
             this.isShow = false;
-            var id = this.phone.id;
-            axios.delete('/api/phone/' + id).then(function (response) {
+            var id = this.scheduler.id;
+            axios.delete('/api/scheduler/' + id).then(function (response) {
                 _this.showSuccess('削除が完了しました。');
             }).catch(function (error) {
                 _this.showFailed('削除に失敗しました。');
@@ -43901,14 +43900,20 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.isShow
-    ? _c("tr", { staticClass: "phone_item" }, [
-        _c("td", [_vm._v(_vm._s(_vm.phone.department))]),
+    ? _c("tr", { staticClass: "scheduler_item" }, [
+        _c("td", [_vm._v(_vm._s(_vm.scheduler.room_name))]),
         _vm._v(" "),
-        _c("td", [_vm._v(_vm._s(_vm.phone.phone_number))]),
+        _c("td", [
+          _vm._v(
+            _vm._s(_vm.scheduler.start_time.slice(11, 16)) +
+              " ~ " +
+              _vm._s(_vm.scheduler.end_time.slice(11, 16))
+          )
+        ]),
         _vm._v(" "),
-        _c("td", [_vm._v(_vm._s(_vm.phone.person_in_charge))]),
+        _c("td", [_vm._v(_vm._s(_vm.scheduler.user_name))]),
         _vm._v(" "),
-        _c("td", [_vm._v(_vm._s(_vm.phone.description))]),
+        _c("td", [_vm._v(_vm._s(_vm.scheduler.description))]),
         _vm._v(" "),
         _c(
           "td",
@@ -43917,17 +43922,11 @@ var render = function() {
             _c(
               "router-link",
               {
-                staticClass: "btn btn-success",
-                attrs: { to: "/keyword/" + this.phone.id, tag: "button" }
-              },
-              [_vm._v("キーワード")]
-            ),
-            _vm._v(" "),
-            _c(
-              "router-link",
-              {
                 staticClass: "btn btn-info",
-                attrs: { to: "/phone/edit/" + this.phone.id, tag: "button" }
+                attrs: {
+                  to: "/scheduler/edit/" + this.scheduler.id,
+                  tag: "button"
+                }
               },
               [_vm._v("編集")]
             ),
@@ -43953,7 +43952,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-73c8d1a6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-08940bf9", module.exports)
   }
 }
 
@@ -43975,10 +43974,10 @@ var render = function() {
         [
           _c("thead", [
             _c("tr", [
-              _c("th", [_vm._v("窓口")]),
-              _c("th", [_vm._v("電話番号")]),
-              _c("th", [_vm._v("担当者")]),
-              _c("th", [_vm._v("詳細")]),
+              _c("th", [_vm._v("会議室名")]),
+              _c("th", [_vm._v("時間")]),
+              _c("th", [_vm._v("予約者")]),
+              _c("th", [_vm._v("内容")]),
               _c(
                 "th",
                 { staticClass: "text-right" },
@@ -43987,7 +43986,7 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "btn btn-primary",
-                      attrs: { to: "/phone/new/", tag: "button" }
+                      attrs: { to: "/scheduler/new/", tag: "button" }
                     },
                     [_vm._v("新規登録")]
                   )
@@ -43999,10 +43998,10 @@ var render = function() {
           _vm._v(" "),
           _c(
             "tbody",
-            _vm._l(_vm.phonelist, function(phone) {
-              return _c("phone-component", {
-                key: phone.id,
-                attrs: { phone: phone }
+            _vm._l(_vm.schedulerList, function(scheduler) {
+              return _c("scheduler-component", {
+                key: scheduler.id,
+                attrs: { scheduler: scheduler }
               })
             })
           )
@@ -44033,7 +44032,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-26cd1128", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-d8062c0a", module.exports)
   }
 }
 
@@ -44067,7 +44066,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/NewPhoneComponent.vue"
+Component.options.__file = "resources/assets/js/components/NewSchedulerComponent.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -44077,9 +44076,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4ad13848", Component.options)
+    hotAPI.createRecord("data-v-7c375cca", Component.options)
   } else {
-    hotAPI.reload("data-v-4ad13848", Component.options)
+    hotAPI.reload("data-v-7c375cca", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -44100,13 +44099,13 @@ var content = __webpack_require__(60);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("58c109a0", content, false);
+var update = __webpack_require__(3)("3f40fbe6", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4ad13848\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./NewPhoneComponent.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4ad13848\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./NewPhoneComponent.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7c375cca\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./NewSchedulerComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7c375cca\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./NewSchedulerComponent.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -44135,8 +44134,215 @@ exports.push([module.i, "\n.required {\n    color: red;\n}\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -44183,43 +44389,86 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default.a],
+    created: function created() {
+        this.getRooms();
+    },
     data: function data() {
         return {
-            phone_number: '',
-            department: '',
-            person_in_charge: '',
+            room_id: 0,
+            target_date: '',
+            start_time: '',
+            end_time: '',
+            user_name: '',
             description: '',
-            isButtonDisabled: false
+            isButtonDisabled: false,
+            roomList: {}
         };
     },
 
     methods: {
-        postData: function postData() {
+        getRooms: function getRooms() {
             var _this = this;
 
+            axios.get('/api/rooms/').then(function (res) {
+                _this.roomList = res.data['data'];
+                _this.isLoading = false;
+            });
+        },
+        today: function today() {
+            var now = new Date();
+            var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
+            this.target_date = yyyymmdd;
+        },
+        tomorrow: function tomorrow() {
+            var now = new Date();
+            now.setDate(now.getDate() + 1);
+            var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
+            this.target_date = yyyymmdd;
+        },
+        dayAfterTomorrow: function dayAfterTomorrow() {
+            var now = new Date();
+            now.setDate(now.getDate() + 2);
+            var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
+            this.target_date = yyyymmdd;
+        },
+        postData: function postData() {
+            var _this2 = this;
+
             this.isButtonDisabled = true;
-            if (this.phone_number.length == 0 || this.department.length == 0) {
+            if (this.room_id == 0) {
+                this.showFailed('会議室が選択されていません。');
+                this.isButtonDisabled = false;
+                return;
+            }
+            if (this.target_date.length == 0 || this.start_time.length == 0 || this.end_time.length == 0 || this.user_name.length == 0) {
                 this.showFailed('必須項目が入力されていません。');
                 this.isButtonDisabled = false;
                 return;
             }
-            if (!this.phone_number.match(/^\d{2,5}-\d{1,4}-\d{4}$/)) {
-                this.showFailed('電話番号はハイフン付き数字で入力してください。');
+            if (this.start_time >= this.end_time) {
+                this.showFailed('開始時刻と終了時刻の指定が不正です。');
                 this.isButtonDisabled = false;
                 return;
             }
-
-            axios.post('/api/phone/', {
-                'phone_number': this.phone_number,
-                'department': this.department,
-                'person_in_charge': this.person_in_charge,
+            if (!this.target_date.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+                this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
+                this.isButtonDisabled = false;
+                return;
+            }
+            var start_time = this.target_date + ' ' + this.start_time;
+            var end_time = this.target_date + ' ' + this.end_time;
+            axios.post('/api/scheduler/', {
+                'room_id': this.room_id,
+                'start_time': start_time,
+                'end_time': end_time,
+                'user_name': this.user_name,
                 'description': this.description
             }).then(function (response) {
-                _this.showSuccess('登録に成功しました。');
+                _this2.showSuccess('登録に成功しました。');
                 location.href = '/';
             }).catch(function (error) {
-                _this.showFailed('入力内容に誤りがあります。');
-                _this.isButtonDisabled = false;
+                _this2.showFailed('入力内容に誤りがあります。');
+                _this2.isButtonDisabled = false;
             });
         }
     }
@@ -44235,71 +44484,62 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "container" }, [
-      _c("h3", [_vm._v("電話番号新規登録")]),
+      _c("h3", [_vm._v("予約登録")]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _vm._m(0, false, false),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-5" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.department,
-                expression: "department"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", name: "name", placeholder: "例) 経理部" },
-            domProps: { value: _vm.department },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.room_id,
+                  expression: "room_id"
                 }
-                _vm.department = $event.target.value
+              ],
+              staticClass: "form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.room_id = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
               }
-            }
-          })
+            },
+            _vm._l(_vm.roomList, function(room) {
+              return _c("option", { domProps: { value: room.id } }, [
+                _vm._v(_vm._s(room.name))
+              ])
+            })
+          )
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _vm._m(1, false, false),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-5" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.phone_number,
-                expression: "phone_number"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              name: "name",
-              placeholder: "例) 050-1234-5678"
-            },
-            domProps: { value: _vm.phone_number },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.phone_number = $event.target.value
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { staticClass: "control-label col-xs-2" }, [
-          _vm._v("担当者")
+        _c("a", { attrs: { href: "#" }, on: { click: _vm.today } }, [
+          _vm._v("今日")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#" }, on: { click: _vm.tomorrow } }, [
+          _vm._v("明日")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#" }, on: { click: _vm.dayAfterTomorrow } }, [
+          _vm._v("明後日")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-5" }, [
@@ -44308,19 +44548,503 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.person_in_charge,
-                expression: "person_in_charge"
+                value: _vm.target_date,
+                expression: "target_date"
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", name: "name", placeholder: "例) 山田 太郎" },
-            domProps: { value: _vm.person_in_charge },
+            attrs: { type: "text", name: "name", placeholder: "2018-01-01" },
+            domProps: { value: _vm.target_date },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.person_in_charge = $event.target.value
+                _vm.target_date = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _vm._m(2, false, false),
+        _vm._v(" "),
+        _c("div", { staticStyle: { display: "table" } }, [
+          _c("div", { staticStyle: { display: "table-cell", width: "50%" } }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.start_time,
+                    expression: "start_time"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.start_time = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "00:00" } }, [_vm._v("00:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:15" } }, [_vm._v("00:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:30" } }, [_vm._v("00:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:45" } }, [_vm._v("00:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:00" } }, [_vm._v("01:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:15" } }, [_vm._v("01:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:30" } }, [_vm._v("01:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:45" } }, [_vm._v("01:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:00" } }, [_vm._v("02:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:15" } }, [_vm._v("02:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:30" } }, [_vm._v("02:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:45" } }, [_vm._v("02:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:00" } }, [_vm._v("03:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:15" } }, [_vm._v("03:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:30" } }, [_vm._v("03:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:45" } }, [_vm._v("03:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:00" } }, [_vm._v("04:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:15" } }, [_vm._v("04:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:30" } }, [_vm._v("04:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:45" } }, [_vm._v("04:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:00" } }, [_vm._v("05:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:15" } }, [_vm._v("05:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:30" } }, [_vm._v("05:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:45" } }, [_vm._v("05:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:00" } }, [_vm._v("06:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:15" } }, [_vm._v("06:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:30" } }, [_vm._v("06:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:45" } }, [_vm._v("06:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:00" } }, [_vm._v("07:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:15" } }, [_vm._v("07:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:30" } }, [_vm._v("07:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:45" } }, [_vm._v("07:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:00" } }, [_vm._v("08:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:15" } }, [_vm._v("08:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:30" } }, [_vm._v("08:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:45" } }, [_vm._v("08:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:00" } }, [_vm._v("09:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:15" } }, [_vm._v("09:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:30" } }, [_vm._v("09:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:45" } }, [_vm._v("09:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:00" } }, [_vm._v("10:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:15" } }, [_vm._v("10:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:30" } }, [_vm._v("10:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:45" } }, [_vm._v("10:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:00" } }, [_vm._v("11:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:15" } }, [_vm._v("11:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:30" } }, [_vm._v("11:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:45" } }, [_vm._v("11:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:00" } }, [_vm._v("12:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:15" } }, [_vm._v("12:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:30" } }, [_vm._v("12:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:45" } }, [_vm._v("12:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:00" } }, [_vm._v("13:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:15" } }, [_vm._v("13:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:30" } }, [_vm._v("13:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:45" } }, [_vm._v("13:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:00" } }, [_vm._v("14:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:15" } }, [_vm._v("14:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:30" } }, [_vm._v("14:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:45" } }, [_vm._v("14:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:00" } }, [_vm._v("15:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:15" } }, [_vm._v("15:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:30" } }, [_vm._v("15:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:45" } }, [_vm._v("15:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:00" } }, [_vm._v("16:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:15" } }, [_vm._v("16:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:30" } }, [_vm._v("16:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:45" } }, [_vm._v("16:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:00" } }, [_vm._v("17:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:15" } }, [_vm._v("17:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:30" } }, [_vm._v("17:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:45" } }, [_vm._v("17:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:00" } }, [_vm._v("18:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:15" } }, [_vm._v("18:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:30" } }, [_vm._v("18:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:45" } }, [_vm._v("18:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:00" } }, [_vm._v("19:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:15" } }, [_vm._v("19:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:30" } }, [_vm._v("19:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:45" } }, [_vm._v("19:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:00" } }, [_vm._v("20:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:15" } }, [_vm._v("20:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:30" } }, [_vm._v("20:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:45" } }, [_vm._v("20:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:00" } }, [_vm._v("21:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:15" } }, [_vm._v("21:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:30" } }, [_vm._v("21:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:45" } }, [_vm._v("21:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:00" } }, [_vm._v("22:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:15" } }, [_vm._v("22:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:30" } }, [_vm._v("22:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:45" } }, [_vm._v("22:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:00" } }, [_vm._v("23:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:15" } }, [_vm._v("23:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:30" } }, [_vm._v("23:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:45" } }, [_vm._v("23:45")])
+              ]
+            )
+          ]),
+          _vm._v("　〜　\n                    "),
+          _c("div", { staticStyle: { display: "table-cell", width: "50%" } }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.end_time,
+                    expression: "end_time"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.end_time = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "00:00" } }, [_vm._v("00:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:15" } }, [_vm._v("00:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:30" } }, [_vm._v("00:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:45" } }, [_vm._v("00:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:00" } }, [_vm._v("01:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:15" } }, [_vm._v("01:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:30" } }, [_vm._v("01:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:45" } }, [_vm._v("01:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:00" } }, [_vm._v("02:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:15" } }, [_vm._v("02:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:30" } }, [_vm._v("02:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:45" } }, [_vm._v("02:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:00" } }, [_vm._v("03:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:15" } }, [_vm._v("03:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:30" } }, [_vm._v("03:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:45" } }, [_vm._v("03:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:00" } }, [_vm._v("04:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:15" } }, [_vm._v("04:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:30" } }, [_vm._v("04:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:45" } }, [_vm._v("04:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:00" } }, [_vm._v("05:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:15" } }, [_vm._v("05:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:30" } }, [_vm._v("05:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:45" } }, [_vm._v("05:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:00" } }, [_vm._v("06:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:15" } }, [_vm._v("06:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:30" } }, [_vm._v("06:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:45" } }, [_vm._v("06:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:00" } }, [_vm._v("07:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:15" } }, [_vm._v("07:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:30" } }, [_vm._v("07:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:45" } }, [_vm._v("07:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:00" } }, [_vm._v("08:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:15" } }, [_vm._v("08:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:30" } }, [_vm._v("08:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:45" } }, [_vm._v("08:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:00" } }, [_vm._v("09:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:15" } }, [_vm._v("09:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:30" } }, [_vm._v("09:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:45" } }, [_vm._v("09:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:00" } }, [_vm._v("10:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:15" } }, [_vm._v("10:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:30" } }, [_vm._v("10:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:45" } }, [_vm._v("10:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:00" } }, [_vm._v("11:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:15" } }, [_vm._v("11:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:30" } }, [_vm._v("11:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:45" } }, [_vm._v("11:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:00" } }, [_vm._v("12:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:15" } }, [_vm._v("12:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:30" } }, [_vm._v("12:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:45" } }, [_vm._v("12:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:00" } }, [_vm._v("13:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:15" } }, [_vm._v("13:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:30" } }, [_vm._v("13:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:45" } }, [_vm._v("13:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:00" } }, [_vm._v("14:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:15" } }, [_vm._v("14:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:30" } }, [_vm._v("14:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:45" } }, [_vm._v("14:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:00" } }, [_vm._v("15:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:15" } }, [_vm._v("15:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:30" } }, [_vm._v("15:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:45" } }, [_vm._v("15:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:00" } }, [_vm._v("16:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:15" } }, [_vm._v("16:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:30" } }, [_vm._v("16:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:45" } }, [_vm._v("16:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:00" } }, [_vm._v("17:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:15" } }, [_vm._v("17:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:30" } }, [_vm._v("17:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:45" } }, [_vm._v("17:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:00" } }, [_vm._v("18:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:15" } }, [_vm._v("18:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:30" } }, [_vm._v("18:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:45" } }, [_vm._v("18:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:00" } }, [_vm._v("19:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:15" } }, [_vm._v("19:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:30" } }, [_vm._v("19:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:45" } }, [_vm._v("19:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:00" } }, [_vm._v("20:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:15" } }, [_vm._v("20:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:30" } }, [_vm._v("20:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:45" } }, [_vm._v("20:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:00" } }, [_vm._v("21:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:15" } }, [_vm._v("21:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:30" } }, [_vm._v("21:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:45" } }, [_vm._v("21:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:00" } }, [_vm._v("22:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:15" } }, [_vm._v("22:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:30" } }, [_vm._v("22:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:45" } }, [_vm._v("22:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:00" } }, [_vm._v("23:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:15" } }, [_vm._v("23:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:30" } }, [_vm._v("23:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:45" } }, [_vm._v("23:45")])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _vm._m(3, false, false),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-5" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.user_name,
+                expression: "user_name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "name", placeholder: "例) 山田 太郎" },
+            domProps: { value: _vm.user_name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.user_name = $event.target.value
               }
             }
           })
@@ -44329,7 +45053,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("label", { staticClass: "control-label col-xs-2" }, [
-          _vm._v("説明")
+          _vm._v("内容")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-5" }, [
@@ -44346,7 +45070,7 @@ var render = function() {
             attrs: {
               type: "text",
               name: "name",
-              placeholder: "例) 経費の申請を行います"
+              placeholder: "打ち合わせのため"
             },
             domProps: { value: _vm.description },
             on: {
@@ -44401,7 +45125,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "control-label col-xs-2" }, [
-      _vm._v("窓口"),
+      _vm._v("会議室名"),
       _c("span", { staticClass: "required" }, [_vm._v(" *")])
     ])
   },
@@ -44410,7 +45134,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "control-label col-xs-2" }, [
-      _vm._v("電話番号"),
+      _vm._v("日付"),
+      _c("span", { staticClass: "required" }, [_vm._v(" *")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "control-label" }, [
+      _vm._v("予約時間"),
+      _c("span", { staticClass: "required" }, [_vm._v(" *")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "control-label col-xs-2" }, [
+      _vm._v("予約者名"),
       _c("span", { staticClass: "required" }, [_vm._v(" *")])
     ])
   }
@@ -44420,7 +45162,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4ad13848", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7c375cca", module.exports)
   }
 }
 
@@ -44429,269 +45171,15 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(64)
-/* template */
-var __vue_template__ = __webpack_require__(65)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/KeywordComponent.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f0d9156a", Component.options)
-  } else {
-    hotAPI.reload("data-v-f0d9156a", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 64 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default.a],
-    data: function data() {
-        return {
-            isButtonDisabled: true,
-            keywords: ''
-        };
-    },
-    created: function created() {
-        this.load();
-    },
-
-    methods: {
-        load: function load() {
-            var _this = this;
-
-            axios.get('/api/keyword/' + this.$route.params.id).then(function (res) {
-                var data = res.data['data'];
-                if (data == null || data.length == 0) {
-                    _this.isButtonDisabled = false;
-                    return;
-                }
-                data.forEach(function (keyword) {
-                    _this.keywords += keyword.keyword + ',';
-                });
-                _this.keywords = _this.keywords.slice(0, -1);
-                _this.isButtonDisabled = false;
-            });
-        },
-
-        selectedFile: function selectedFile(e) {
-            var self = this;
-            this.isButtonDisabled = true;
-            e.preventDefault();
-            var file = e.target.files[0];
-            if (!this.checkCsvExtension(file)) {
-                self.isButtonDisabled = false;
-                this.showFailed('アップロードできるのはCSVファイルのみです。');
-                return;
-            }
-            var reader = new FileReader();
-            reader.readAsText(file);
-            reader.onload = function (ev) {
-                var text = reader.result;
-                text = text.replace(/\r?\n/g, "").replace("'", "").replace(/[\"]/g, "").replace(" ", "").replace("　", "");
-                self.keywords = text;
-                self.isButtonDisabled = false;
-            };
-        },
-        checkCsvExtension: function checkCsvExtension(file) {
-            var ret = false;
-            var fileTypes = file.name.split(".");
-            var len = fileTypes.length;
-            if (len === 0) {
-                return ret;
-            }
-            ret = fileTypes[len - 1];
-            return ret == 'csv';
-        },
-        submit: function submit() {
-            var _this2 = this;
-
-            this.isButtonDisabled = true;
-            if (this.keywords == 0) {
-                this.showFailed('キーワードが入力されていません。');
-                this.isButtonDisabled = false;
-                return;
-            }
-            var array = this.keywords.split(',');
-            var count = array.length;
-            if (!window.confirm("元のキーワードは全て上書かれます。\n" + count + '件のキーワードを登録しまか？')) {
-                this.isButtonDisabled = false;
-                return;
-            }
-            axios.put('/api/keyword/' + this.$route.params.id, { 'keywords': this.keywords }).then(function (response) {
-                _this2.showSuccess('登録に成功しました。');
-                location.href = '/';
-            }).catch(function (error) {
-                _this2.showFailed('登録に失敗しました。');
-                _this2.isButtonDisabled = false;
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("h3", [_vm._v("キーワード登録")]),
-      _vm._v("\n    カンマ区切りでキーワードを入力してください。\n    "),
-      _c("textarea", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.keywords,
-            expression: "keywords"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { rows: "3" },
-        domProps: { value: _vm.keywords },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.keywords = $event.target.value
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", [
-        _c(
-          "span",
-          {
-            staticClass: "btn btn-success",
-            attrs: { disabled: _vm.isButtonDisabled }
-          },
-          [
-            _vm._v("\n            CSVでアップロード\n            "),
-            _c("input", {
-              staticStyle: { display: "none" },
-              attrs: { type: "file", disabled: _vm.isButtonDisabled },
-              on: { change: _vm.selectedFile }
-            })
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { type: "button", disabled: _vm.isButtonDisabled },
-          on: { click: _vm.submit }
-        },
-        [_vm._v("登録")]
-      ),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { to: "/", disabled: _vm.isButtonDisabled, tag: "button" }
-        },
-        [_vm._v("戻る")]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-f0d9156a", module.exports)
-  }
-}
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(67)
+  __webpack_require__(64)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(69)
+var __vue_script__ = __webpack_require__(66)
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(67)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -44708,7 +45196,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/UpdatePhoneComponent.vue"
+Component.options.__file = "resources/assets/js/components/UpdateSchedulerComponent.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -44718,9 +45206,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-098b430f", Component.options)
+    hotAPI.createRecord("data-v-2b7da0e2", Component.options)
   } else {
-    hotAPI.reload("data-v-098b430f", Component.options)
+    hotAPI.reload("data-v-2b7da0e2", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -44731,23 +45219,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 67 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(68);
+var content = __webpack_require__(65);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("41c0a570", content, false);
+var update = __webpack_require__(3)("21a0e404", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-098b430f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./UpdatePhoneComponent.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-098b430f\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./UpdatePhoneComponent.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b7da0e2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./UpdateSchedulerComponent.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2b7da0e2\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./UpdateSchedulerComponent.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -44757,7 +45245,7 @@ if(false) {
 }
 
 /***/ }),
-/* 68 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -44771,15 +45259,225 @@ exports.push([module.i, "\n.required {\n    color: red;\n}\n", ""]);
 
 
 /***/ }),
-/* 69 */
+/* 66 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue__);
+var _mixins$created$data$;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -44826,58 +45524,105 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["default"] = (_mixins$created$data$ = {
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default.a],
+    created: function created() {
+        this.getRooms();
+    },
     data: function data() {
         return {
-            phone: [],
-            isButtonDisabled: true
+            scheduler: {},
+            isButtonDisabled: false,
+            roomList: {}
         };
-    },
-    created: function created() {
-        this.load();
-    },
-
-    methods: {
-        postData: function postData() {
-            var _this = this;
-
-            this.isButtonDisabled = true;
-            if (this.phone.phone_number.length == 0 || this.phone.department.length == 0) {
-                this.showFailed('必須項目が入力されていません。');
-                this.isButtonDisabled = false;
-                return;
-            }
-            if (!this.phone.phone_number.match(/^\d{2,5}-\d{1,4}-\d{4}$/)) {
-                this.showFailed('電話番号はハイフン付き数字で入力してください。');
-                this.isButtonDisabled = false;
-                return;
-            }
-
-            axios.put('/api/phone/' + this.$route.params.id, this.phone).then(function (response) {
-                _this.showSuccess('編集に成功しました。');
-                location.href = '/';
-            }).catch(function (error) {
-                _this.showFailed('入力内容に誤りがあります。');
-                _this.isButtonDisabled = false;
-            });
-        },
-        load: function load() {
-            var _this2 = this;
-
-            axios.get('/api/phone/' + this.$route.params.id).then(function (res) {
-                _this2.phone = res.data['data'];
-                _this2.isButtonDisabled = false;
-            });
-        }
-    },
-    components: {
-        LoadingComponent: __WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue___default.a
     }
-});
+}, _defineProperty(_mixins$created$data$, 'created', function created() {
+    this.load();
+    this.getRooms();
+}), _defineProperty(_mixins$created$data$, 'methods', {
+    getRooms: function getRooms() {
+        var _this = this;
+
+        axios.get('/api/rooms/').then(function (res) {
+            _this.roomList = res.data['data'];
+            _this.isLoading = false;
+        });
+    },
+    today: function today() {
+        var now = new Date();
+        var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
+        this.scheduler.target_date = yyyymmdd;
+    },
+    tomorrow: function tomorrow() {
+        var now = new Date();
+        now.setDate(now.getDate() + 1);
+        var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
+        this.scheduler.target_date = yyyymmdd;
+    },
+    dayAfterTomorrow: function dayAfterTomorrow() {
+        var now = new Date();
+        now.setDate(now.getDate() + 2);
+        var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
+        this.scheduler.target_date = yyyymmdd;
+    },
+    postData: function postData() {
+        var _this2 = this;
+
+        this.isButtonDisabled = true;
+        if (this.scheduler.room_id == 0) {
+            this.showFailed('会議室が選択されていません。');
+            this.isButtonDisabled = false;
+            return;
+        }
+        if (this.scheduler.target_date.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
+            this.showFailed('必須項目が入力されていません。');
+            this.isButtonDisabled = false;
+            return;
+        }
+        if (this.scheduler.start_time >= this.scheduler.end_time) {
+            this.showFailed('開始時刻と終了時刻の指定が不正です。');
+            this.isButtonDisabled = false;
+            return;
+        }
+        if (!this.scheduler.target_date.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+            this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
+            this.isButtonDisabled = false;
+            return;
+        }
+        var start_time = this.scheduler.target_date + ' ' + this.scheduler.start_time;
+        var end_time = this.scheduler.target_date + ' ' + this.scheduler.end_time;
+        axios.put('/api/scheduler/' + this.scheduler.id, {
+            'room_id': this.scheduler.room_id,
+            'start_time': start_time,
+            'end_time': end_time,
+            'user_name': this.scheduler.user_name,
+            'description': this.scheduler.description
+        }).then(function (response) {
+            _this2.showSuccess('登録に成功しました。');
+            location.href = '/';
+        }).catch(function (error) {
+            _this2.showFailed('入力内容に誤りがあります。');
+            _this2.isButtonDisabled = false;
+        });
+    },
+    load: function load() {
+        var _this3 = this;
+
+        axios.get('/api/scheduler/' + this.$route.params.id).then(function (res) {
+            var data = res.data['data'];
+            data.target_date = data.start_time.slice(0, 10);
+            data.start_time = data.start_time.slice(11, 16);
+            data.end_time = data.end_time.slice(11, 16);
+            _this3.scheduler = data;
+            _this3.isButtonDisabled = false;
+        });
+    }
+}), _defineProperty(_mixins$created$data$, 'components', {
+    LoadingComponent: __WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue___default.a
+}), _mixins$created$data$);
 
 /***/ }),
-/* 70 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -44886,67 +45631,64 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "container" }, [
-      _c("h3", [_vm._v("電話番号編集登録")]),
+      _c("h3", [_vm._v("予約登録")]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _vm._m(0, false, false),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-5" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.phone.department,
-                expression: "phone.department"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", name: "name", placeholder: "例) 経理部" },
-            domProps: { value: _vm.phone.department },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.scheduler.room_id,
+                  expression: "scheduler.room_id"
                 }
-                _vm.$set(_vm.phone, "department", $event.target.value)
+              ],
+              staticClass: "form-control",
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.$set(
+                    _vm.scheduler,
+                    "room_id",
+                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                  )
+                }
               }
-            }
-          })
+            },
+            _vm._l(_vm.roomList, function(room) {
+              return _c("option", { domProps: { value: room.id } }, [
+                _vm._v(_vm._s(room.name))
+              ])
+            })
+          )
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _vm._m(1, false, false),
         _vm._v(" "),
-        _c("div", { staticClass: "col-xs-5" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.phone.phone_number,
-                expression: "phone.phone_number"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text", placeholder: "例) 050-1234-5678" },
-            domProps: { value: _vm.phone.phone_number },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.phone, "phone_number", $event.target.value)
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { staticClass: "control-label col-xs-2" }, [
-          _vm._v("担当者")
+        _c("a", { attrs: { href: "#" }, on: { click: _vm.today } }, [
+          _vm._v("今日")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#" }, on: { click: _vm.tomorrow } }, [
+          _vm._v("明日")
+        ]),
+        _vm._v(" "),
+        _c("a", { attrs: { href: "#" }, on: { click: _vm.dayAfterTomorrow } }, [
+          _vm._v("明後日")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-5" }, [
@@ -44955,19 +45697,507 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.phone.person_in_charge,
-                expression: "phone.person_in_charge"
+                value: _vm.scheduler.target_date,
+                expression: "scheduler.target_date"
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "例) 山田 太郎" },
-            domProps: { value: _vm.phone.person_in_charge },
+            attrs: { type: "text", name: "name", placeholder: "2018-01-01" },
+            domProps: { value: _vm.scheduler.target_date },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.phone, "person_in_charge", $event.target.value)
+                _vm.$set(_vm.scheduler, "target_date", $event.target.value)
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _vm._m(2, false, false),
+        _vm._v(" "),
+        _c("div", { staticStyle: { display: "table" } }, [
+          _c("div", { staticStyle: { display: "table-cell", width: "50%" } }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.scheduler.start_time,
+                    expression: "scheduler.start_time"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.scheduler,
+                      "start_time",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "00:00" } }, [_vm._v("00:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:15" } }, [_vm._v("00:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:30" } }, [_vm._v("00:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:45" } }, [_vm._v("00:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:00" } }, [_vm._v("01:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:15" } }, [_vm._v("01:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:30" } }, [_vm._v("01:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:45" } }, [_vm._v("01:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:00" } }, [_vm._v("02:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:15" } }, [_vm._v("02:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:30" } }, [_vm._v("02:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:45" } }, [_vm._v("02:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:00" } }, [_vm._v("03:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:15" } }, [_vm._v("03:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:30" } }, [_vm._v("03:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:45" } }, [_vm._v("03:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:00" } }, [_vm._v("04:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:15" } }, [_vm._v("04:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:30" } }, [_vm._v("04:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:45" } }, [_vm._v("04:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:00" } }, [_vm._v("05:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:15" } }, [_vm._v("05:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:30" } }, [_vm._v("05:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:45" } }, [_vm._v("05:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:00" } }, [_vm._v("06:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:15" } }, [_vm._v("06:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:30" } }, [_vm._v("06:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:45" } }, [_vm._v("06:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:00" } }, [_vm._v("07:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:15" } }, [_vm._v("07:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:30" } }, [_vm._v("07:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:45" } }, [_vm._v("07:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:00" } }, [_vm._v("08:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:15" } }, [_vm._v("08:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:30" } }, [_vm._v("08:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:45" } }, [_vm._v("08:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:00" } }, [_vm._v("09:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:15" } }, [_vm._v("09:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:30" } }, [_vm._v("09:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:45" } }, [_vm._v("09:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:00" } }, [_vm._v("10:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:15" } }, [_vm._v("10:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:30" } }, [_vm._v("10:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:45" } }, [_vm._v("10:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:00" } }, [_vm._v("11:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:15" } }, [_vm._v("11:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:30" } }, [_vm._v("11:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:45" } }, [_vm._v("11:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:00" } }, [_vm._v("12:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:15" } }, [_vm._v("12:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:30" } }, [_vm._v("12:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:45" } }, [_vm._v("12:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:00" } }, [_vm._v("13:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:15" } }, [_vm._v("13:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:30" } }, [_vm._v("13:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:45" } }, [_vm._v("13:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:00" } }, [_vm._v("14:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:15" } }, [_vm._v("14:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:30" } }, [_vm._v("14:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:45" } }, [_vm._v("14:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:00" } }, [_vm._v("15:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:15" } }, [_vm._v("15:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:30" } }, [_vm._v("15:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:45" } }, [_vm._v("15:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:00" } }, [_vm._v("16:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:15" } }, [_vm._v("16:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:30" } }, [_vm._v("16:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:45" } }, [_vm._v("16:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:00" } }, [_vm._v("17:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:15" } }, [_vm._v("17:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:30" } }, [_vm._v("17:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:45" } }, [_vm._v("17:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:00" } }, [_vm._v("18:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:15" } }, [_vm._v("18:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:30" } }, [_vm._v("18:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:45" } }, [_vm._v("18:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:00" } }, [_vm._v("19:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:15" } }, [_vm._v("19:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:30" } }, [_vm._v("19:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:45" } }, [_vm._v("19:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:00" } }, [_vm._v("20:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:15" } }, [_vm._v("20:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:30" } }, [_vm._v("20:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:45" } }, [_vm._v("20:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:00" } }, [_vm._v("21:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:15" } }, [_vm._v("21:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:30" } }, [_vm._v("21:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:45" } }, [_vm._v("21:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:00" } }, [_vm._v("22:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:15" } }, [_vm._v("22:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:30" } }, [_vm._v("22:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:45" } }, [_vm._v("22:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:00" } }, [_vm._v("23:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:15" } }, [_vm._v("23:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:30" } }, [_vm._v("23:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:45" } }, [_vm._v("23:45")])
+              ]
+            )
+          ]),
+          _vm._v("　〜　\n                "),
+          _c("div", { staticStyle: { display: "table-cell", width: "50%" } }, [
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.scheduler.end_time,
+                    expression: "scheduler.end_time"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.scheduler,
+                      "end_time",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { value: "00:00" } }, [_vm._v("00:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:15" } }, [_vm._v("00:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:30" } }, [_vm._v("00:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "00:45" } }, [_vm._v("00:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:00" } }, [_vm._v("01:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:15" } }, [_vm._v("01:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:30" } }, [_vm._v("01:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "01:45" } }, [_vm._v("01:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:00" } }, [_vm._v("02:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:15" } }, [_vm._v("02:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:30" } }, [_vm._v("02:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "02:45" } }, [_vm._v("02:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:00" } }, [_vm._v("03:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:15" } }, [_vm._v("03:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:30" } }, [_vm._v("03:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "03:45" } }, [_vm._v("03:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:00" } }, [_vm._v("04:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:15" } }, [_vm._v("04:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:30" } }, [_vm._v("04:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "04:45" } }, [_vm._v("04:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:00" } }, [_vm._v("05:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:15" } }, [_vm._v("05:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:30" } }, [_vm._v("05:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "05:45" } }, [_vm._v("05:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:00" } }, [_vm._v("06:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:15" } }, [_vm._v("06:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:30" } }, [_vm._v("06:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "06:45" } }, [_vm._v("06:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:00" } }, [_vm._v("07:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:15" } }, [_vm._v("07:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:30" } }, [_vm._v("07:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "07:45" } }, [_vm._v("07:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:00" } }, [_vm._v("08:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:15" } }, [_vm._v("08:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:30" } }, [_vm._v("08:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "08:45" } }, [_vm._v("08:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:00" } }, [_vm._v("09:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:15" } }, [_vm._v("09:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:30" } }, [_vm._v("09:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "09:45" } }, [_vm._v("09:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:00" } }, [_vm._v("10:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:15" } }, [_vm._v("10:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:30" } }, [_vm._v("10:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "10:45" } }, [_vm._v("10:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:00" } }, [_vm._v("11:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:15" } }, [_vm._v("11:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:30" } }, [_vm._v("11:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "11:45" } }, [_vm._v("11:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:00" } }, [_vm._v("12:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:15" } }, [_vm._v("12:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:30" } }, [_vm._v("12:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "12:45" } }, [_vm._v("12:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:00" } }, [_vm._v("13:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:15" } }, [_vm._v("13:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:30" } }, [_vm._v("13:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "13:45" } }, [_vm._v("13:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:00" } }, [_vm._v("14:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:15" } }, [_vm._v("14:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:30" } }, [_vm._v("14:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "14:45" } }, [_vm._v("14:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:00" } }, [_vm._v("15:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:15" } }, [_vm._v("15:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:30" } }, [_vm._v("15:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "15:45" } }, [_vm._v("15:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:00" } }, [_vm._v("16:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:15" } }, [_vm._v("16:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:30" } }, [_vm._v("16:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "16:45" } }, [_vm._v("16:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:00" } }, [_vm._v("17:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:15" } }, [_vm._v("17:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:30" } }, [_vm._v("17:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "17:45" } }, [_vm._v("17:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:00" } }, [_vm._v("18:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:15" } }, [_vm._v("18:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:30" } }, [_vm._v("18:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "18:45" } }, [_vm._v("18:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:00" } }, [_vm._v("19:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:15" } }, [_vm._v("19:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:30" } }, [_vm._v("19:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "19:45" } }, [_vm._v("19:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:00" } }, [_vm._v("20:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:15" } }, [_vm._v("20:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:30" } }, [_vm._v("20:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "20:45" } }, [_vm._v("20:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:00" } }, [_vm._v("21:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:15" } }, [_vm._v("21:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:30" } }, [_vm._v("21:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "21:45" } }, [_vm._v("21:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:00" } }, [_vm._v("22:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:15" } }, [_vm._v("22:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:30" } }, [_vm._v("22:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "22:45" } }, [_vm._v("22:45")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:00" } }, [_vm._v("23:00")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:15" } }, [_vm._v("23:15")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:30" } }, [_vm._v("23:30")]),
+                _vm._v(" "),
+                _c("option", { attrs: { value: "23:45" } }, [_vm._v("23:45")])
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _vm._m(3, false, false),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-5" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.scheduler.user_name,
+                expression: "scheduler.user_name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text", name: "name", placeholder: "例) 山田 太郎" },
+            domProps: { value: _vm.scheduler.user_name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.scheduler, "user_name", $event.target.value)
               }
             }
           })
@@ -44976,7 +46206,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("label", { staticClass: "control-label col-xs-2" }, [
-          _vm._v("説明")
+          _vm._v("内容")
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-5" }, [
@@ -44985,19 +46215,23 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.phone.description,
-                expression: "phone.description"
+                value: _vm.scheduler.description,
+                expression: "scheduler.description"
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "text", placeholder: "例) 経費の申請を行います" },
-            domProps: { value: _vm.phone.description },
+            attrs: {
+              type: "text",
+              name: "name",
+              placeholder: "打ち合わせのため"
+            },
+            domProps: { value: _vm.scheduler.description },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.$set(_vm.phone, "description", $event.target.value)
+                _vm.$set(_vm.scheduler, "description", $event.target.value)
               }
             }
           })
@@ -45044,7 +46278,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "control-label col-xs-2" }, [
-      _vm._v("窓口"),
+      _vm._v("会議室名"),
       _c("span", { staticClass: "required" }, [_vm._v(" *")])
     ])
   },
@@ -45053,7 +46287,25 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { staticClass: "control-label col-xs-2" }, [
-      _vm._v("電話番号"),
+      _vm._v("日付"),
+      _c("span", { staticClass: "required" }, [_vm._v(" *")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "control-label" }, [
+      _vm._v("予約時間"),
+      _c("span", { staticClass: "required" }, [_vm._v(" *")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", { staticClass: "control-label col-xs-2" }, [
+      _vm._v("予約者名"),
       _c("span", { staticClass: "required" }, [_vm._v(" *")])
     ])
   }
@@ -45063,12 +46315,12 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-098b430f", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2b7da0e2", module.exports)
   }
 }
 
 /***/ }),
-/* 71 */
+/* 68 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

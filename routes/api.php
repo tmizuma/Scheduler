@@ -15,5 +15,6 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'api'], function() {
     Route::resource('scheduler', 'SchedulersController');
+    Route::resource('rooms', 'RoomsController');
 });
 

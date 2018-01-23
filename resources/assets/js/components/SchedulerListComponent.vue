@@ -13,6 +13,8 @@
 <div class="">
     <div class="table_panel">会議室予約一覧</div>
     <div class="table-responsive">
+        <input type="text" name="name" v-model="target_date" class="form-control" placeholder="2018-01-01">
+
         <table class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
@@ -43,7 +45,8 @@
         data() {
             return {
                 isLoading: false,
-                schedulerList: []
+                schedulerList: [],
+                target_date: ''
             }
         },
         methods: {

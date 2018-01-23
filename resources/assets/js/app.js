@@ -23,10 +23,9 @@ window.Vue = require('vue');
 const router = new VueRouter({
     mode: 'history',
     routes: [
-        {path: '/', component: require('./components/PhoneListComponent.vue')},
-        {path: '/phone/new', component: require('./components/NewPhoneComponent.vue')},
-        {path: '/keyword/:id', component: require('./components/KeywordComponent.vue')},
-        {path: '/phone/edit/:id', component: require('./components/UpdatePhoneComponent.vue')}
+        {path: '/', component: require('./components/SchedulerListComponent.vue')},
+        {path: '/scheduler/new', component: require('./components/NewSchedulerComponent.vue')},
+        {path: '/scheduler/edit/:id', component: require('./components/UpdateSchedulerComponent.vue')}
     ]
 });
 

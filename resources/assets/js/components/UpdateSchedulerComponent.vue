@@ -4,31 +4,238 @@
     }
 </style>
 <template>
-<div class="">
-    <div class="container">
-        <h3>電話番号編集登録</h3>
+    <div class="">
+        <div class="container">
+            <h3>予約登録</h3>
             <div class="form-group">
                 <label class="control-label col-xs-2">会議室名<span class="required"> *</span></label>
                 <div class="col-xs-5">
-                    <input type="text" v-model="phone.department" name="name" class="form-control" placeholder="例) 経理部">
+                    <select v-model="scheduler.room_id" class="form-control">
+                        <option v-for="room in roomList" v-bind:value="room.id">{{ room.name }}</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-2">電話番号<span class="required"> *</span></label>
+                <label class="control-label col-xs-2">日付<span class="required"> *</span></label>　　<a href="#" @click="today">今日</a>　<a href="#" @click="tomorrow">明日</a>　<a href="#" @click="dayAfterTomorrow">明後日</a>
                 <div class="col-xs-5">
-                    <input type="text" v-model="phone.phone_number" class="form-control" placeholder="例) 050-1234-5678">
+                    <input type="text" name="name" v-model="scheduler.target_date" class="form-control" placeholder="2018-01-01">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-2">担当者</label>
-                <div class="col-xs-5">
-                    <input type="text" v-model="phone.person_in_charge" class="form-control" placeholder="例) 山田 太郎">
+                <label class="control-label">予約時間<span class="required"> *</span></label>
+                <div style="display: table">
+                    <div style="display: table-cell; width: 50%;">
+                        <select v-model="scheduler.start_time" class="form-control">
+                            <option value="00:00">00:00</option>
+                            <option value="00:15">00:15</option>
+                            <option value="00:30">00:30</option>
+                            <option value="00:45">00:45</option>
+                            <option value="01:00">01:00</option>
+                            <option value="01:15">01:15</option>
+                            <option value="01:30">01:30</option>
+                            <option value="01:45">01:45</option>
+                            <option value="02:00">02:00</option>
+                            <option value="02:15">02:15</option>
+                            <option value="02:30">02:30</option>
+                            <option value="02:45">02:45</option>
+                            <option value="03:00">03:00</option>
+                            <option value="03:15">03:15</option>
+                            <option value="03:30">03:30</option>
+                            <option value="03:45">03:45</option>
+                            <option value="04:00">04:00</option>
+                            <option value="04:15">04:15</option>
+                            <option value="04:30">04:30</option>
+                            <option value="04:45">04:45</option>
+                            <option value="05:00">05:00</option>
+                            <option value="05:15">05:15</option>
+                            <option value="05:30">05:30</option>
+                            <option value="05:45">05:45</option>
+                            <option value="06:00">06:00</option>
+                            <option value="06:15">06:15</option>
+                            <option value="06:30">06:30</option>
+                            <option value="06:45">06:45</option>
+                            <option value="07:00">07:00</option>
+                            <option value="07:15">07:15</option>
+                            <option value="07:30">07:30</option>
+                            <option value="07:45">07:45</option>
+                            <option value="08:00">08:00</option>
+                            <option value="08:15">08:15</option>
+                            <option value="08:30">08:30</option>
+                            <option value="08:45">08:45</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:15">09:15</option>
+                            <option value="09:30">09:30</option>
+                            <option value="09:45">09:45</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:15">10:15</option>
+                            <option value="10:30">10:30</option>
+                            <option value="10:45">10:45</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:15">11:15</option>
+                            <option value="11:30">11:30</option>
+                            <option value="11:45">11:45</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:15">12:15</option>
+                            <option value="12:30">12:30</option>
+                            <option value="12:45">12:45</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:15">13:15</option>
+                            <option value="13:30">13:30</option>
+                            <option value="13:45">13:45</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:15">14:15</option>
+                            <option value="14:30">14:30</option>
+                            <option value="14:45">14:45</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:15">15:15</option>
+                            <option value="15:30">15:30</option>
+                            <option value="15:45">15:45</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:15">16:15</option>
+                            <option value="16:30">16:30</option>
+                            <option value="16:45">16:45</option>
+                            <option value="17:00">17:00</option>
+                            <option value="17:15">17:15</option>
+                            <option value="17:30">17:30</option>
+                            <option value="17:45">17:45</option>
+                            <option value="18:00">18:00</option>
+                            <option value="18:15">18:15</option>
+                            <option value="18:30">18:30</option>
+                            <option value="18:45">18:45</option>
+                            <option value="19:00">19:00</option>
+                            <option value="19:15">19:15</option>
+                            <option value="19:30">19:30</option>
+                            <option value="19:45">19:45</option>
+                            <option value="20:00">20:00</option>
+                            <option value="20:15">20:15</option>
+                            <option value="20:30">20:30</option>
+                            <option value="20:45">20:45</option>
+                            <option value="21:00">21:00</option>
+                            <option value="21:15">21:15</option>
+                            <option value="21:30">21:30</option>
+                            <option value="21:45">21:45</option>
+                            <option value="22:00">22:00</option>
+                            <option value="22:15">22:15</option>
+                            <option value="22:30">22:30</option>
+                            <option value="22:45">22:45</option>
+                            <option value="23:00">23:00</option>
+                            <option value="23:15">23:15</option>
+                            <option value="23:30">23:30</option>
+                            <option value="23:45">23:45</option>
+                        </select>
+                    </div>　〜　
+                    <div style="display: table-cell; width: 50%;">
+                        <select v-model="scheduler.end_time" class="form-control">
+                            <option value="00:00">00:00</option>
+                            <option value="00:15">00:15</option>
+                            <option value="00:30">00:30</option>
+                            <option value="00:45">00:45</option>
+                            <option value="01:00">01:00</option>
+                            <option value="01:15">01:15</option>
+                            <option value="01:30">01:30</option>
+                            <option value="01:45">01:45</option>
+                            <option value="02:00">02:00</option>
+                            <option value="02:15">02:15</option>
+                            <option value="02:30">02:30</option>
+                            <option value="02:45">02:45</option>
+                            <option value="03:00">03:00</option>
+                            <option value="03:15">03:15</option>
+                            <option value="03:30">03:30</option>
+                            <option value="03:45">03:45</option>
+                            <option value="04:00">04:00</option>
+                            <option value="04:15">04:15</option>
+                            <option value="04:30">04:30</option>
+                            <option value="04:45">04:45</option>
+                            <option value="05:00">05:00</option>
+                            <option value="05:15">05:15</option>
+                            <option value="05:30">05:30</option>
+                            <option value="05:45">05:45</option>
+                            <option value="06:00">06:00</option>
+                            <option value="06:15">06:15</option>
+                            <option value="06:30">06:30</option>
+                            <option value="06:45">06:45</option>
+                            <option value="07:00">07:00</option>
+                            <option value="07:15">07:15</option>
+                            <option value="07:30">07:30</option>
+                            <option value="07:45">07:45</option>
+                            <option value="08:00">08:00</option>
+                            <option value="08:15">08:15</option>
+                            <option value="08:30">08:30</option>
+                            <option value="08:45">08:45</option>
+                            <option value="09:00">09:00</option>
+                            <option value="09:15">09:15</option>
+                            <option value="09:30">09:30</option>
+                            <option value="09:45">09:45</option>
+                            <option value="10:00">10:00</option>
+                            <option value="10:15">10:15</option>
+                            <option value="10:30">10:30</option>
+                            <option value="10:45">10:45</option>
+                            <option value="11:00">11:00</option>
+                            <option value="11:15">11:15</option>
+                            <option value="11:30">11:30</option>
+                            <option value="11:45">11:45</option>
+                            <option value="12:00">12:00</option>
+                            <option value="12:15">12:15</option>
+                            <option value="12:30">12:30</option>
+                            <option value="12:45">12:45</option>
+                            <option value="13:00">13:00</option>
+                            <option value="13:15">13:15</option>
+                            <option value="13:30">13:30</option>
+                            <option value="13:45">13:45</option>
+                            <option value="14:00">14:00</option>
+                            <option value="14:15">14:15</option>
+                            <option value="14:30">14:30</option>
+                            <option value="14:45">14:45</option>
+                            <option value="15:00">15:00</option>
+                            <option value="15:15">15:15</option>
+                            <option value="15:30">15:30</option>
+                            <option value="15:45">15:45</option>
+                            <option value="16:00">16:00</option>
+                            <option value="16:15">16:15</option>
+                            <option value="16:30">16:30</option>
+                            <option value="16:45">16:45</option>
+                            <option value="17:00">17:00</option>
+                            <option value="17:15">17:15</option>
+                            <option value="17:30">17:30</option>
+                            <option value="17:45">17:45</option>
+                            <option value="18:00">18:00</option>
+                            <option value="18:15">18:15</option>
+                            <option value="18:30">18:30</option>
+                            <option value="18:45">18:45</option>
+                            <option value="19:00">19:00</option>
+                            <option value="19:15">19:15</option>
+                            <option value="19:30">19:30</option>
+                            <option value="19:45">19:45</option>
+                            <option value="20:00">20:00</option>
+                            <option value="20:15">20:15</option>
+                            <option value="20:30">20:30</option>
+                            <option value="20:45">20:45</option>
+                            <option value="21:00">21:00</option>
+                            <option value="21:15">21:15</option>
+                            <option value="21:30">21:30</option>
+                            <option value="21:45">21:45</option>
+                            <option value="22:00">22:00</option>
+                            <option value="22:15">22:15</option>
+                            <option value="22:30">22:30</option>
+                            <option value="22:45">22:45</option>
+                            <option value="23:00">23:00</option>
+                            <option value="23:15">23:15</option>
+                            <option value="23:30">23:30</option>
+                            <option value="23:45">23:45</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-2">説明</label>
+                <label class="control-label col-xs-2">予約者名<span class="required"> *</span></label>
                 <div class="col-xs-5">
-                    <input type="text" v-model="phone.description" class="form-control" placeholder="例) 経費の申請を行います">
+                    <input type="text" name="name" v-model="scheduler.user_name" class="form-control" placeholder="例) 山田 太郎">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-xs-2">内容</label>
+                <div class="col-xs-5">
+                    <input type="text" name="name" v-model="scheduler.description" class="form-control" placeholder="打ち合わせのため">
                 </div>
             </div>
             <div class="form-group">
@@ -37,51 +244,105 @@
                     <router-link :to="'/'" v-bind:disabled="isButtonDisabled" tag="button" class="btn btn-secondary">戻る</router-link>
                 </div>
             </div>
+        </div>
     </div>
-
-</div>
 </template>
 <script>
     import alertComponent from './mixin/Alert.vue';
     import LoadingComponent from './LoadingComponent.vue'
     export default {
         mixins: [alertComponent],
+        created() {
+            this.getRooms()
+        },
         data() {
             return {
-                phone: [],
-                isButtonDisabled: true,
+                scheduler: {},
+                isButtonDisabled: false,
+                roomList: {},
             }
         },
         created() {
             this.load()
+            this.getRooms();
         },
         methods: {
+            getRooms() {
+                axios.get('/api/rooms/')
+                        .then(res =>  {
+                    this.roomList = res.data['data']
+                this.isLoading = false
+            })
+            },
+            today() {
+                var now = new Date();
+                var yyyymmdd = now.getFullYear() + '-' +
+                        ( "0"+( now.getMonth()+1 ) ).slice(-2)+ '-' +
+                        ( "0"+now.getDate() ).slice(-2);
+                this.scheduler.target_date = yyyymmdd;
+            },
+            tomorrow() {
+                var now = new Date();
+                now.setDate(now.getDate() + 1);
+                var yyyymmdd = now.getFullYear() + '-' +
+                        ( "0"+( now.getMonth()+1 ) ).slice(-2)+ '-' +
+                        ( "0"+now.getDate() ).slice(-2);
+                this.scheduler.target_date = yyyymmdd;
+            },
+            dayAfterTomorrow() {
+                var now = new Date();
+                now.setDate(now.getDate() + 2);
+                var yyyymmdd = now.getFullYear() + '-' +
+                        ( "0"+( now.getMonth()+1 ) ).slice(-2)+ '-' +
+                        ( "0"+now.getDate() ).slice(-2);
+                this.scheduler.target_date = yyyymmdd;
+            },
             postData() {
                 this.isButtonDisabled = true;
-                if (this.phone.phone_number.length == 0 || this.phone.department.length == 0) {
+                if (this.scheduler.room_id == 0) {
+                    this.showFailed('会議室が選択されていません。');
+                    this.isButtonDisabled = false;
+                    return;
+                }
+                if (this.scheduler.target_date.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
                     this.showFailed('必須項目が入力されていません。');
                     this.isButtonDisabled = false;
                     return;
                 }
-                if (!this.phone.phone_number.match(/^\d{2,5}-\d{1,4}-\d{4}$/)) {
-                    this.showFailed('電話番号はハイフン付き数字で入力してください。');
+                if (this.scheduler.start_time >= this.scheduler.end_time) {
+                    this.showFailed('開始時刻と終了時刻の指定が不正です。');
                     this.isButtonDisabled = false;
                     return;
                 }
-
-                axios.put('/api/phone/' + this.$route.params.id, this.phone).then(
-                    (response) => {
-                        this.showSuccess('編集に成功しました。');
-                        location.href = '/';
-                    }).catch( error => {
-                        this.showFailed('入力内容に誤りがあります。');
-                        this.isButtonDisabled = false;
-                    });
+                if (!this.scheduler.target_date.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+                    this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
+                    this.isButtonDisabled = false;
+                    return;
+                }
+                var start_time = this.scheduler.target_date + ' ' + this.scheduler.start_time;
+                var end_time = this.scheduler.target_date + ' ' + this.scheduler.end_time;
+                axios.put('/api/scheduler/' + this.scheduler.id, {
+                    'room_id': this.scheduler.room_id,
+                    'start_time': start_time,
+                    'end_time': end_time,
+                    'user_name': this.scheduler.user_name,
+                    'description': this.scheduler.description,
+                }).then((response) => {
+                    this.showSuccess('登録に成功しました。');
+                    location.href = '/';
+                }).catch( error => {
+                    this.showFailed('入力内容に誤りがあります。');
+                this.isButtonDisabled = false;
+            });
             },
             load() {
-                axios.get('/api/phone/' + this.$route.params.id)
+                axios.get('/api/scheduler/' + this.$route.params.id)
                         .then(res =>  {
-                    this.phone = res.data['data']
+                    var data = res.data['data'];
+                    data.target_date = data.start_time.slice(0,10);
+                    data.start_time = data.start_time.slice(11,16);
+                    data.end_time = data.end_time.slice(11,16);
+                    this.scheduler = data;
                     this.isButtonDisabled = false
                 })
             },

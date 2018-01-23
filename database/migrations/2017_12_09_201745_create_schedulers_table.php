@@ -16,8 +16,8 @@ class CreateSchedulersTable extends Migration
         Schema::create('schedulers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('room_id');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->dateTime('start_time')->index();
+            $table->dateTime('end_time')->index();
             $table->string('user_name');
             $table->text('description');
             $table->timestamp('deleted_at')->nullable();

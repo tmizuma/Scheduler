@@ -14,7 +14,7 @@
 <div class="container index">
   <div class="row height_100">
    <div class="col-sm-2 color_admin_left text-white">
-      <div class="item"><a href ="/">電話番号管理</a></div>
+      <div class="item"><a href ="/">会議室予約</a></div>
    </div>
    <div class="col-sm-10 main_color">
     <div id="app" class="margin_top_20">

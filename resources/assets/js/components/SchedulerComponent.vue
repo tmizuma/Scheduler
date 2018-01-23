@@ -2,12 +2,12 @@
 <template>
 <tr class="scheduler_item" v-if="isShow">
     <td>{{ scheduler.room_name }}</td>
-    <td>{{ scheduler.start_time }} ~ {{ scheduler.end_time }}</td>
+    <td>{{ scheduler.start_time.slice(11,16) }} ~ {{ scheduler.end_time.slice(11,16) }}</td>
     <td>{{ scheduler.user_name }}</td>
     <td>{{ scheduler.description }}</td>
     <td class="text-right">
         <router-link :to="'/scheduler/edit/' + this.scheduler.id" tag="button" class="btn btn-info">編集</router-link>
-        <button type="button" class="btn btn-warning" v-on:click="deleteItem">削除</button>
+        <button type="button" class="btn btn-danger" v-on:click="deleteItem">削除</button>
     </td>
     </tr>
 </template>
