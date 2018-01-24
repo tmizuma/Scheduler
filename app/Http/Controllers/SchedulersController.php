@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Http\Service\SchedulersService;
+use App\Http\Component\StatusCode;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -57,17 +58,17 @@ class SchedulersController extends AjaxController {
                 $this->request->input('start_time'),
                 $this->request->input('end_time'))
         ))) {
-            $this->data = null;
-        } else {
-            $this->data = $this->schedulersService->createScheduler([
-                'room_id' => $this->request->input('room_id'),
-                'user_name' => $this->request->input('user_name'),
-                'start_time' => $this->request->input('start_time'),
-                'end_time' => $this->request->input('end_time'),
-                'description' => empty($this->request->input('description')) ? '' : $this->request->input('description'),
-                'updated_at' => Carbon::now()
-            ]);
+            $this->status = StatusCode::DUPLICATE_SCHEDULE;
+            return $this->response();
         }
+        $this->data = $this->schedulersService->createScheduler([
+            'room_id' => $this->request->input('room_id'),
+            'user_name' => $this->request->input('user_name'),
+            'start_time' => $this->request->input('start_time'),
+            'end_time' => $this->request->input('end_time'),
+            'description' => empty($this->request->input('description')) ? '' : $this->request->input('description'),
+            'updated_at' => Carbon::now()
+        ]);
     }
 
     public function update($id) {
@@ -90,17 +91,17 @@ class SchedulersController extends AjaxController {
                 $this->request->input('start_time'),
                 $this->request->input('end_time'))
         ))) {
-            $this->data = null;
-        } else {
-            $this->schedulersService->updateScheduler($id, [
-                'room_id' => $this->request->input('room_id'),
-                'user_name' => $this->request->input('user_name'),
-                'start_time' => $this->request->input('start_time'),
-                'end_time' => $this->request->input('end_time'),
-                'description' => empty($this->request->input('description')) ? '' : $this->request->input('description'),
-                'updated_at' => Carbon::now()
-            ]);
+            $this->status = StatusCode::DUPLICATE_SCHEDULE;
+            return $this->response();
         }
+        $this->schedulersService->updateScheduler($id, [
+            'room_id' => $this->request->input('room_id'),
+            'user_name' => $this->request->input('user_name'),
+            'start_time' => $this->request->input('start_time'),
+            'end_time' => $this->request->input('end_time'),
+            'description' => empty($this->request->input('description')) ? '' : $this->request->input('description'),
+            'updated_at' => Carbon::now()
+        ]);
     }
 
     public function destroy($id) {

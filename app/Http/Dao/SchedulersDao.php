@@ -27,7 +27,7 @@ class SchedulersDao extends BaseDao {
 			->whereBetween('schedulers.start_time', [$target_date . ' 00:00:00', $target_date . ' 23:59:59'])
 			->whereNull('rooms.deleted_at')
 			->whereNull('schedulers.deleted_at');
-		return $sql->orderBy('schedulers.start_time')->get();
+		return $sql->orderBy('schedulers.start_time')->orderBy('rooms.name')->get();
 	}
 
 	/**

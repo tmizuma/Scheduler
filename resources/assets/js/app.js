@@ -24,6 +24,7 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {path: '/', component: require('./components/SchedulerListComponent.vue')},
+        {path: '/:day', component: require('./components/SchedulerListComponent.vue')},
         {path: '/scheduler/new', component: require('./components/NewSchedulerComponent.vue')},
         {path: '/scheduler/edit/:id', component: require('./components/UpdateSchedulerComponent.vue')}
     ]

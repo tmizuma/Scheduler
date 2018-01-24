@@ -79,7 +79,7 @@ class SchedulerTest extends TestCase {
             'end_time'     => $target_date . ' 11:00:00',
             'room_id'      => $this->rooms[0]->id
         ]);
-        $response->assertStatus($this->getStatusCodeOK());
+        $response->assertStatus($this->getStatusCodeDuplicateSchedule());
         $this->assertEquals($count, Scheduler::count());
     }
 
@@ -120,7 +120,7 @@ class SchedulerTest extends TestCase {
             'end_time'     => $target_date . ' 11:00:00',
             'room_id'      => $this->rooms[0]->id
         ]);
-        $response->assertStatus($this->getStatusCodeOK());
+        $response->assertStatus($this->getStatusCodeDuplicateSchedule());
         $updated_scheduler = Scheduler::find($scheduler->id);
         $this->assertEquals($updated_scheduler->user_name, 'test_user');
         $this->assertEquals($updated_scheduler->description, 'test_description');

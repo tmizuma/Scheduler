@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use App\Http\Component\StatusCode;
 use App\Room;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
@@ -24,5 +25,9 @@ abstract class TestCase extends BaseTestCase {
 
     protected function getStatusCodeOK() {
         return self::HTTP_RESPONSE_CODE_OK;
+    }
+
+    protected function getStatusCodeDuplicateSchedule() {
+        return StatusCode::DUPLICATE_SCHEDULE;
     }
 }

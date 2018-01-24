@@ -57,7 +57,7 @@ class SchedulersService {
 	}
 
 	public function updateScheduler( $id, $data ) {
-		Scheduler::where('id', $id)
+		return Scheduler::where('id', $id)
 			->update($data);
 	}
 

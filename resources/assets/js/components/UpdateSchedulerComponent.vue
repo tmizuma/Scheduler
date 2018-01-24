@@ -2,11 +2,19 @@
     .required {
         color: red;
     }
+    .day_button {
+        width: 30px;
+        border-radius: 5px;
+    }
+    .today_button {
+        width: 50px;
+        border-radius: 5px;
+    }
 </style>
 <template>
     <div class="">
         <div class="container">
-            <h3>予約登録</h3>
+            <h3>予約編集画面</h3>
             <div class="form-group">
                 <label class="control-label col-xs-2">会議室名<span class="required"> *</span></label>
                 <div class="col-xs-5">
@@ -16,7 +24,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-2">日付<span class="required"> *</span></label>　　<a href="#" @click="today">今日</a>　<a href="#" @click="tomorrow">明日</a>　<a href="#" @click="dayAfterTomorrow">明後日</a>
+                <label class="control-label col-xs-2">日付<span class="required"> *</span></label>　　
+                <button class="day_button" @click="addDay">+</button>　
+                <button class="day_button" @click="minusDay">-</button>　
+                <button class="today_button" @click="today">今日</button>　
                 <div class="col-xs-5">
                     <input type="text" name="name" v-model="scheduler.target_date" class="form-control" placeholder="2018-01-01">
                 </div>
@@ -253,7 +264,8 @@
     export default {
         mixins: [alertComponent],
         created() {
-            this.getRooms()
+            this.load()
+            this.getRooms();
         },
         data() {
             return {
@@ -261,10 +273,6 @@
                 isButtonDisabled: false,
                 roomList: {},
             }
-        },
-        created() {
-            this.load()
-            this.getRooms();
         },
         methods: {
             getRooms() {
@@ -275,29 +283,29 @@
             })
             },
             today() {
-                var now = new Date();
-                var yyyymmdd = now.getFullYear() + '-' +
-                        ( "0"+( now.getMonth()+1 ) ).slice(-2)+ '-' +
-                        ( "0"+now.getDate() ).slice(-2);
-                this.scheduler.target_date = yyyymmdd;
+                var day = new Date();
+                this.scheduler.target_date = this.getYyyyMmDdStr(day) + '(' + this.getWeekStr(day) + ')';
             },
-            tomorrow() {
-                var now = new Date();
-                now.setDate(now.getDate() + 1);
-                var yyyymmdd = now.getFullYear() + '-' +
-                        ( "0"+( now.getMonth()+1 ) ).slice(-2)+ '-' +
-                        ( "0"+now.getDate() ).slice(-2);
-                this.scheduler.target_date = yyyymmdd;
+            addDay() {
+                if (this.scheduler.target_date == '') {
+                    this.today();
+                }
+                var day = new Date(this.getTargetDayStr());
+                day.setDate(day.getDate() + 1);
+                var yyyymmdd = this.getYyyyMmDdStr(day);
+                this.scheduler.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
             },
-            dayAfterTomorrow() {
-                var now = new Date();
-                now.setDate(now.getDate() + 2);
-                var yyyymmdd = now.getFullYear() + '-' +
-                        ( "0"+( now.getMonth()+1 ) ).slice(-2)+ '-' +
-                        ( "0"+now.getDate() ).slice(-2);
-                this.scheduler.target_date = yyyymmdd;
+            minusDay() {
+                if (this.scheduler.target_date == '') {
+                    this.today();
+                }
+                var day = new Date(this.getTargetDayStr());
+                day.setDate(day.getDate() - 1);
+                var yyyymmdd = this.getYyyyMmDdStr(day);
+                this.scheduler.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
             },
             postData() {
+                var self = this;
                 this.isButtonDisabled = true;
                 if (this.scheduler.room_id == 0) {
                     this.showFailed('会議室が選択されていません。');
@@ -314,13 +322,13 @@
                     this.isButtonDisabled = false;
                     return;
                 }
-                if (!this.scheduler.target_date.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+                if (!this.getTargetDayStr().match(/^\d{4}\-\d{2}\-\d{2}$/)) {
                     this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
                     this.isButtonDisabled = false;
                     return;
                 }
-                var start_time = this.scheduler.target_date + ' ' + this.scheduler.start_time;
-                var end_time = this.scheduler.target_date + ' ' + this.scheduler.end_time;
+                var start_time = this.getTargetDayStr() + ' ' + this.scheduler.start_time;
+                var end_time = this.getTargetDayStr() + ' ' + this.scheduler.end_time;
                 axios.put('/api/scheduler/' + this.scheduler.id, {
                     'room_id': this.scheduler.room_id,
                     'start_time': start_time,
@@ -328,24 +336,41 @@
                     'user_name': this.scheduler.user_name,
                     'description': this.scheduler.description,
                 }).then((response) => {
+                    if (response.status == 220) {
+                        this.showFailed('他の予定と重複しています。');
+                        this.isButtonDisabled = false;
+                        return;
+                    }
                     this.showSuccess('登録に成功しました。');
-                    location.href = '/';
+                    location.href = '/' + self.getTargetDayStr();
                 }).catch( error => {
                     this.showFailed('入力内容に誤りがあります。');
                 this.isButtonDisabled = false;
             });
             },
             load() {
+                var self = this;
                 axios.get('/api/scheduler/' + this.$route.params.id)
                         .then(res =>  {
                     var data = res.data['data'];
-                    data.target_date = data.start_time.slice(0,10);
+                    data.target_date = data.start_time.slice(0,10) + '(' + self.getWeekStr(new Date(data.start_time.slice(0,10))) + ')';
                     data.start_time = data.start_time.slice(11,16);
                     data.end_time = data.end_time.slice(11,16);
                     this.scheduler = data;
                     this.isButtonDisabled = false
                 })
             },
+            getTargetDayStr() {
+                return this.scheduler.target_date.slice(0,10);
+            },
+            getWeekStr(day) {
+                return [ "日", "月", "火", "水", "木", "金", "土" ][day.getDay()]
+            },
+            getYyyyMmDdStr(day) {
+                return day.getFullYear() + '-' +
+                        ( "0" + ( day.getMonth() + 1 ) ).slice(-2) + '-' +
+                        ( "0" + day.getDate() ).slice(-2);
+            }
         },
         components: {
             LoadingComponent

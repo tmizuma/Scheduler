@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(9);
-var isBuffer = __webpack_require__(26);
+var isBuffer = __webpack_require__(27);
 
 /*global toString:true*/
 
@@ -787,6 +787,54 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(54)
+/* template */
+var __vue_template__ = __webpack_require__(55)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/mixin/Alert.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d0b68a32", Component.options)
+  } else {
+    hotAPI.reload("data-v-d0b68a32", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11510,10 +11558,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(17).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(18).setImmediate))
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 var g;
@@ -11540,14 +11588,14 @@ module.exports = g;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(28);
+var normalizeHeaderName = __webpack_require__(29);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -11638,54 +11686,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(54)
-/* template */
-var __vue_template__ = __webpack_require__(55)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/mixin/Alert.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d0b68a32", Component.options)
-  } else {
-    hotAPI.reload("data-v-d0b68a32", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
 
 /***/ }),
 /* 8 */
@@ -11903,12 +11903,12 @@ module.exports = function bind(fn, thisArg) {
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(29);
-var buildURL = __webpack_require__(31);
-var parseHeaders = __webpack_require__(32);
-var isURLSameOrigin = __webpack_require__(33);
+var settle = __webpack_require__(30);
+var buildURL = __webpack_require__(32);
+var parseHeaders = __webpack_require__(33);
+var isURLSameOrigin = __webpack_require__(34);
 var createError = __webpack_require__(11);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(34);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(35);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -12005,7 +12005,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(35);
+      var cookies = __webpack_require__(36);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -12089,7 +12089,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(30);
+var enhanceError = __webpack_require__(31);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -12152,6 +12152,58 @@ module.exports = Cancel;
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
+  __webpack_require__(44)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(47)
+/* template */
+var __vue_template__ = __webpack_require__(57)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-d8062c0a"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/SchedulerListComponent.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d8062c0a", Component.options)
+  } else {
+    hotAPI.reload("data-v-d8062c0a", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
   __webpack_require__(48)
 }
 var normalizeComponent = __webpack_require__(1)
@@ -12198,22 +12250,22 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(16);
+__webpack_require__(17);
 module.exports = __webpack_require__(68);
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(20);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -12224,10 +12276,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__webpack_require__(20);
+__webpack_require__(21);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
-window.Vue = __webpack_require__(4);
+window.Vue = __webpack_require__(5);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -12237,7 +12289,7 @@ window.Vue = __webpack_require__(4);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     mode: 'history',
-    routes: [{ path: '/', component: __webpack_require__(43) }, { path: '/scheduler/new', component: __webpack_require__(58) }, { path: '/scheduler/edit/:id', component: __webpack_require__(63) }]
+    routes: [{ path: '/', component: __webpack_require__(14) }, { path: '/:day', component: __webpack_require__(14) }, { path: '/scheduler/new', component: __webpack_require__(58) }, { path: '/scheduler/edit/:id', component: __webpack_require__(63) }]
 });
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
@@ -12245,7 +12297,7 @@ var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 }).$mount('#app');
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -12298,13 +12350,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(18);
+__webpack_require__(19);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -12494,10 +12546,10 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(8)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(8)))
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15127,10 +15179,10 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window._ = __webpack_require__(21);
+window._ = __webpack_require__(22);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -15138,7 +15190,7 @@ window._ = __webpack_require__(21);
  * code may be modified to fit the specific needs of your application.
  */
 
-window.$ = window.jQuery = __webpack_require__(23);
+window.$ = window.jQuery = __webpack_require__(24);
 
 //require('bootstrap-sass');
 
@@ -15148,7 +15200,7 @@ window.$ = window.jQuery = __webpack_require__(23);
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = __webpack_require__(4);
+window.Vue = __webpack_require__(5);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -15156,7 +15208,7 @@ window.Vue = __webpack_require__(4);
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(24);
+window.axios = __webpack_require__(25);
 
 window.axios.defaults.headers.common = {
   //    'X-CSRF-TOKEN': window.Laravel.csrfToken,
@@ -15164,7 +15216,7 @@ window.axios.defaults.headers.common = {
 };
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -32253,10 +32305,10 @@ window.axios.defaults.headers.common = {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(22)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(23)(module)))
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -32284,7 +32336,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -42544,13 +42596,13 @@ return jQuery;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(25);
+module.exports = __webpack_require__(26);
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42558,8 +42610,8 @@ module.exports = __webpack_require__(25);
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(9);
-var Axios = __webpack_require__(27);
-var defaults = __webpack_require__(6);
+var Axios = __webpack_require__(28);
+var defaults = __webpack_require__(7);
 
 /**
  * Create an instance of Axios
@@ -42593,14 +42645,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(13);
-axios.CancelToken = __webpack_require__(41);
+axios.CancelToken = __webpack_require__(42);
 axios.isCancel = __webpack_require__(12);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(42);
+axios.spread = __webpack_require__(43);
 
 module.exports = axios;
 
@@ -42609,7 +42661,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 /*!
@@ -42636,16 +42688,16 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(6);
+var defaults = __webpack_require__(7);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(36);
-var dispatchRequest = __webpack_require__(37);
+var InterceptorManager = __webpack_require__(37);
+var dispatchRequest = __webpack_require__(38);
 
 /**
  * Create a new instance of Axios
@@ -42722,7 +42774,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42741,7 +42793,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42774,7 +42826,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42802,7 +42854,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42877,7 +42929,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42937,7 +42989,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43012,7 +43064,7 @@ module.exports = (
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43055,7 +43107,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43115,7 +43167,7 @@ module.exports = (
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43174,18 +43226,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(38);
+var transformData = __webpack_require__(39);
 var isCancel = __webpack_require__(12);
-var defaults = __webpack_require__(6);
-var isAbsoluteURL = __webpack_require__(39);
-var combineURLs = __webpack_require__(40);
+var defaults = __webpack_require__(7);
+var isAbsoluteURL = __webpack_require__(40);
+var combineURLs = __webpack_require__(41);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -43267,7 +43319,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43294,7 +43346,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43315,7 +43367,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43336,7 +43388,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43400,7 +43452,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -43431,58 +43483,6 @@ module.exports = function spread(callback) {
     return callback.apply(null, arr);
   };
 };
-
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(44)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(47)
-/* template */
-var __vue_template__ = __webpack_require__(57)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-d8062c0a"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/SchedulerListComponent.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d8062c0a", Component.options)
-  } else {
-    hotAPI.reload("data-v-d8062c0a", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
 
 
 /***/ }),
@@ -43520,7 +43520,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.table_panel[data-v-d8062c0a] {\n    color: #ffffff;\n    background-color: #4582ec;\n    padding: 10px 15px;\n    border-bottom: 1px solid transparent;\n    border-top-right-radius: 3px;\n    border-top-left-radius: 3px;\n    border-color: #4582ec;\n}\n", ""]);
+exports.push([module.i, "\n.table_panel[data-v-d8062c0a] {\n    color: #ffffff;\n    background-color: #4582ec;\n    padding: 10px 15px;\n    border-bottom: 1px solid transparent;\n    border-top-right-radius: 3px;\n    border-top-left-radius: 3px;\n    border-color: #4582ec;\n}\n.day_button[data-v-d8062c0a] {\n    width: 30px;\n    border-radius: 5px;\n}\n.today_button[data-v-d8062c0a] {\n    width: 50px;\n    border-radius: 5px;\n}\n.no_result[data-v-d8062c0a] {\n    text-align: center;\n    color: gray;\n}\n.search_target_day[data-v-d8062c0a]{\n    width: 42%;\n}\n", ""]);
 
 // exports
 
@@ -43564,10 +43564,12 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__LoadingComponent_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__LoadingComponent_vue__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__LoadingComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__LoadingComponent_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SchedulerComponent_vue__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SchedulerComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SchedulerComponent_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixin_Alert_vue__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mixin_Alert_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mixin_Alert_vue__);
 //
 //
 //
@@ -43624,15 +43626,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mixins: [__WEBPACK_IMPORTED_MODULE_2__mixin_Alert_vue___default.a],
     created: function created() {
+        this.today();
         this.showLoading();
         this.load();
         this.getRooms();
-        this.today();
     },
     data: function data() {
         return {
@@ -43651,26 +43674,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         load: function load() {
             var _this = this;
 
-            axios.get('/api/scheduler/').then(function (res) {
-                _this.schedulerList = res.data['data'];
-                _this.isLoading = false;
-            });
+            if (this.$route.params.day) {
+                this.setTargetDay(this.$route.params.day);
+                axios.get('/api/scheduler/', { params: {
+                        'target_date': this.$route.params.day
+                    } }).then(function (response) {
+                    _this.schedulerList = response.data['data'];
+                    _this.isLoading = false;
+                });
+            } else {
+                axios.get('/api/scheduler/').then(function (res) {
+                    _this.schedulerList = res.data['data'];
+                    _this.isLoading = false;
+                });
+            }
         },
         search: function search() {
             var _this2 = this;
 
+            if (!this.getTargetDayStr().match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+                this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
+                this.isButtonDisabled = false;
+                return;
+            }
             axios.get('/api/scheduler/', { params: {
                     'room_id': this.room_id,
-                    'target_date': this.target_date
+                    'target_date': this.getTargetDayStr()
                 } }).then(function (response) {
                 _this2.schedulerList = response.data['data'];
                 _this2.isLoading = false;
             });
         },
+        setTargetDay: function setTargetDay(day) {
+            var day = new Date(day);
+            this.target_date = this.getYyyyMmDdStr(day) + '(' + this.getWeekStr(day) + ')';
+        },
         today: function today() {
-            var now = new Date();
-            var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-            this.target_date = yyyymmdd;
+            var day = new Date();
+            this.target_date = this.getYyyyMmDdStr(day) + '(' + this.getWeekStr(day) + ')';
+        },
+        addDay: function addDay() {
+            var day = new Date(this.getTargetDayStr());
+            day.setDate(day.getDate() + 1);
+            var yyyymmdd = this.getYyyyMmDdStr(day);
+            this.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
+        },
+        minusDay: function minusDay() {
+            var day = new Date(this.getTargetDayStr());
+            day.setDate(day.getDate() - 1);
+            var yyyymmdd = this.getYyyyMmDdStr(day);
+            this.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
         },
         getRooms: function getRooms() {
             var _this3 = this;
@@ -43679,6 +43732,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this3.roomList = response.data['data'];
                 _this3.isLoading = false;
             });
+        },
+        getTargetDayStr: function getTargetDayStr() {
+            return this.target_date.slice(0, 10);
+        },
+        getWeekStr: function getWeekStr(day) {
+            return ["日", "月", "火", "水", "木", "金", "土"][day.getDay()];
+        },
+        getYyyyMmDdStr: function getYyyyMmDdStr(day) {
+            return day.getFullYear() + '-' + ("0" + (day.getMonth() + 1)).slice(-2) + '-' + ("0" + day.getDate()).slice(-2);
         }
     },
     components: {
@@ -43848,7 +43910,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__);
 //
 //
@@ -44024,7 +44086,7 @@ var render = function() {
         _vm._v(" "),
         _c("tbody", [
           _c("tr", [
-            _c("td", { staticStyle: { width: "30%" } }, [
+            _c("td", { staticClass: "search_target_day" }, [
               _vm._v("\n                    日付："),
               _c("input", {
                 directives: [
@@ -44050,7 +44112,25 @@ var render = function() {
                     _vm.target_date = $event.target.value
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "day_button", on: { click: _vm.addDay } },
+                [_vm._v("+")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "day_button", on: { click: _vm.minusDay } },
+                [_vm._v("-")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                { staticClass: "today_button", on: { click: _vm.today } },
+                [_vm._v("今日")]
+              )
             ]),
             _vm._v(" "),
             _c("td", [
@@ -44145,6 +44225,12 @@ var render = function() {
           )
         ]
       ),
+      _vm._v(" "),
+      this.schedulerList.length == 0
+        ? _c("div", { staticClass: "no_result" }, [
+            _vm._v("対象の会議室予約はありません。")
+          ])
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "div",
@@ -44268,7 +44354,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.required {\n    color: red;\n}\n", ""]);
+exports.push([module.i, "\n.required {\n    color: red;\n}\n.day_button {\n    width: 30px;\n    border-radius: 5px;\n}\n.today_button {\n    width: 50px;\n    border-radius: 5px;\n}\n", ""]);
 
 // exports
 
@@ -44279,8 +44365,19 @@ exports.push([module.i, "\n.required {\n    color: red;\n}\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -44536,6 +44633,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default.a],
     created: function created() {
         this.getRooms();
+        this.today();
     },
     data: function data() {
         return {
@@ -44560,25 +44658,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         today: function today() {
-            var now = new Date();
-            var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-            this.target_date = yyyymmdd;
+            var day = new Date();
+            this.target_date = this.getYyyyMmDdStr(day) + '(' + this.getWeekStr(day) + ')';
         },
-        tomorrow: function tomorrow() {
-            var now = new Date();
-            now.setDate(now.getDate() + 1);
-            var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-            this.target_date = yyyymmdd;
+        addDay: function addDay() {
+            if (this.target_date == '') {
+                this.today();
+            }
+            var day = new Date(this.getTargetDayStr());
+            day.setDate(day.getDate() + 1);
+            var yyyymmdd = this.getYyyyMmDdStr(day);
+            this.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
         },
-        dayAfterTomorrow: function dayAfterTomorrow() {
-            var now = new Date();
-            now.setDate(now.getDate() + 2);
-            var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-            this.target_date = yyyymmdd;
+        minusDay: function minusDay() {
+            if (this.target_date == '') {
+                this.today();
+            }
+            var day = new Date(this.getTargetDayStr());
+            day.setDate(day.getDate() - 1);
+            var yyyymmdd = this.getYyyyMmDdStr(day);
+            this.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
         },
         postData: function postData() {
             var _this2 = this;
 
+            var self = this;
             this.isButtonDisabled = true;
             if (this.room_id == 0) {
                 this.showFailed('会議室が選択されていません。');
@@ -44595,13 +44699,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.isButtonDisabled = false;
                 return;
             }
-            if (!this.target_date.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+            if (!this.getTargetDayStr().match(/^\d{4}\-\d{2}\-\d{2}$/)) {
                 this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
                 this.isButtonDisabled = false;
                 return;
             }
-            var start_time = this.target_date + ' ' + this.start_time;
-            var end_time = this.target_date + ' ' + this.end_time;
+            var start_time = this.getTargetDayStr() + ' ' + this.start_time;
+            var end_time = this.getTargetDayStr() + ' ' + this.end_time;
             axios.post('/api/scheduler/', {
                 'room_id': this.room_id,
                 'start_time': start_time,
@@ -44609,12 +44713,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 'user_name': this.user_name,
                 'description': this.description
             }).then(function (response) {
+                if (response.status == 220) {
+                    _this2.showFailed('他の予定と重複しています。');
+                    _this2.isButtonDisabled = false;
+                    return;
+                }
                 _this2.showSuccess('登録に成功しました。');
-                location.href = '/';
+                location.href = '/' + self.getTargetDayStr();
             }).catch(function (error) {
                 _this2.showFailed('入力内容に誤りがあります。');
                 _this2.isButtonDisabled = false;
             });
+        },
+        getTargetDayStr: function getTargetDayStr() {
+            return this.target_date.slice(0, 10);
+        },
+        getWeekStr: function getWeekStr(day) {
+            return ["日", "月", "火", "水", "木", "金", "土"][day.getDay()];
+        },
+        getYyyyMmDdStr: function getYyyyMmDdStr(day) {
+            return day.getFullYear() + '-' + ("0" + (day.getMonth() + 1)).slice(-2) + '-' + ("0" + day.getDate()).slice(-2);
         }
     }
 });
@@ -44629,7 +44747,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "container" }, [
-      _c("h3", [_vm._v("予約登録")]),
+      _c("h3", [_vm._v("予約画面")]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _vm._m(0, false, false),
@@ -44675,17 +44793,21 @@ var render = function() {
       _c("div", { staticClass: "form-group" }, [
         _vm._m(1, false, false),
         _vm._v(" "),
-        _c("a", { attrs: { href: "#" }, on: { click: _vm.today } }, [
-          _vm._v("今日")
+        _c("button", { staticClass: "day_button", on: { click: _vm.addDay } }, [
+          _vm._v("+")
         ]),
         _vm._v(" "),
-        _c("a", { attrs: { href: "#" }, on: { click: _vm.tomorrow } }, [
-          _vm._v("明日")
-        ]),
+        _c(
+          "button",
+          { staticClass: "day_button", on: { click: _vm.minusDay } },
+          [_vm._v("-")]
+        ),
         _vm._v(" "),
-        _c("a", { attrs: { href: "#" }, on: { click: _vm.dayAfterTomorrow } }, [
-          _vm._v("明後日")
-        ]),
+        _c(
+          "button",
+          { staticClass: "today_button", on: { click: _vm.today } },
+          [_vm._v("今日")]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-5" }, [
           _c("input", {
@@ -45398,7 +45520,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.required {\n    color: red;\n}\n", ""]);
+exports.push([module.i, "\n.required {\n    color: red;\n}\n.day_button {\n    width: 30px;\n    border-radius: 5px;\n}\n.today_button {\n    width: 50px;\n    border-radius: 5px;\n}\n", ""]);
 
 // exports
 
@@ -45409,269 +45531,277 @@ exports.push([module.i, "\n.required {\n    color: red;\n}\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue__);
-var _mixins$created$data$;
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
-
-/* harmony default export */ __webpack_exports__["default"] = (_mixins$created$data$ = {
+/* harmony default export */ __webpack_exports__["default"] = ({
     mixins: [__WEBPACK_IMPORTED_MODULE_0__mixin_Alert_vue___default.a],
     created: function created() {
+        this.load();
         this.getRooms();
     },
     data: function data() {
@@ -45680,91 +45810,112 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             isButtonDisabled: false,
             roomList: {}
         };
+    },
+
+    methods: {
+        getRooms: function getRooms() {
+            var _this = this;
+
+            axios.get('/api/rooms/').then(function (res) {
+                _this.roomList = res.data['data'];
+                _this.isLoading = false;
+            });
+        },
+        today: function today() {
+            var day = new Date();
+            this.scheduler.target_date = this.getYyyyMmDdStr(day) + '(' + this.getWeekStr(day) + ')';
+        },
+        addDay: function addDay() {
+            if (this.scheduler.target_date == '') {
+                this.today();
+            }
+            var day = new Date(this.getTargetDayStr());
+            day.setDate(day.getDate() + 1);
+            var yyyymmdd = this.getYyyyMmDdStr(day);
+            this.scheduler.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
+        },
+        minusDay: function minusDay() {
+            if (this.scheduler.target_date == '') {
+                this.today();
+            }
+            var day = new Date(this.getTargetDayStr());
+            day.setDate(day.getDate() - 1);
+            var yyyymmdd = this.getYyyyMmDdStr(day);
+            this.scheduler.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
+        },
+        postData: function postData() {
+            var _this2 = this;
+
+            var self = this;
+            this.isButtonDisabled = true;
+            if (this.scheduler.room_id == 0) {
+                this.showFailed('会議室が選択されていません。');
+                this.isButtonDisabled = false;
+                return;
+            }
+            if (this.scheduler.target_date.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
+                this.showFailed('必須項目が入力されていません。');
+                this.isButtonDisabled = false;
+                return;
+            }
+            if (this.scheduler.start_time >= this.scheduler.end_time) {
+                this.showFailed('開始時刻と終了時刻の指定が不正です。');
+                this.isButtonDisabled = false;
+                return;
+            }
+            if (!this.getTargetDayStr().match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+                this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
+                this.isButtonDisabled = false;
+                return;
+            }
+            var start_time = this.getTargetDayStr() + ' ' + this.scheduler.start_time;
+            var end_time = this.getTargetDayStr() + ' ' + this.scheduler.end_time;
+            axios.put('/api/scheduler/' + this.scheduler.id, {
+                'room_id': this.scheduler.room_id,
+                'start_time': start_time,
+                'end_time': end_time,
+                'user_name': this.scheduler.user_name,
+                'description': this.scheduler.description
+            }).then(function (response) {
+                if (response.status == 220) {
+                    _this2.showFailed('他の予定と重複しています。');
+                    _this2.isButtonDisabled = false;
+                    return;
+                }
+                _this2.showSuccess('登録に成功しました。');
+                location.href = '/' + self.getTargetDayStr();
+            }).catch(function (error) {
+                _this2.showFailed('入力内容に誤りがあります。');
+                _this2.isButtonDisabled = false;
+            });
+        },
+        load: function load() {
+            var _this3 = this;
+
+            var self = this;
+            axios.get('/api/scheduler/' + this.$route.params.id).then(function (res) {
+                var data = res.data['data'];
+                data.target_date = data.start_time.slice(0, 10) + '(' + self.getWeekStr(new Date(data.start_time.slice(0, 10))) + ')';
+                data.start_time = data.start_time.slice(11, 16);
+                data.end_time = data.end_time.slice(11, 16);
+                _this3.scheduler = data;
+                _this3.isButtonDisabled = false;
+            });
+        },
+        getTargetDayStr: function getTargetDayStr() {
+            return this.scheduler.target_date.slice(0, 10);
+        },
+        getWeekStr: function getWeekStr(day) {
+            return ["日", "月", "火", "水", "木", "金", "土"][day.getDay()];
+        },
+        getYyyyMmDdStr: function getYyyyMmDdStr(day) {
+            return day.getFullYear() + '-' + ("0" + (day.getMonth() + 1)).slice(-2) + '-' + ("0" + day.getDate()).slice(-2);
+        }
+    },
+    components: {
+        LoadingComponent: __WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue___default.a
     }
-}, _defineProperty(_mixins$created$data$, 'created', function created() {
-    this.load();
-    this.getRooms();
-}), _defineProperty(_mixins$created$data$, 'methods', {
-    getRooms: function getRooms() {
-        var _this = this;
-
-        axios.get('/api/rooms/').then(function (res) {
-            _this.roomList = res.data['data'];
-            _this.isLoading = false;
-        });
-    },
-    today: function today() {
-        var now = new Date();
-        var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-        this.scheduler.target_date = yyyymmdd;
-    },
-    tomorrow: function tomorrow() {
-        var now = new Date();
-        now.setDate(now.getDate() + 1);
-        var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-        this.scheduler.target_date = yyyymmdd;
-    },
-    dayAfterTomorrow: function dayAfterTomorrow() {
-        var now = new Date();
-        now.setDate(now.getDate() + 2);
-        var yyyymmdd = now.getFullYear() + '-' + ("0" + (now.getMonth() + 1)).slice(-2) + '-' + ("0" + now.getDate()).slice(-2);
-        this.scheduler.target_date = yyyymmdd;
-    },
-    postData: function postData() {
-        var _this2 = this;
-
-        this.isButtonDisabled = true;
-        if (this.scheduler.room_id == 0) {
-            this.showFailed('会議室が選択されていません。');
-            this.isButtonDisabled = false;
-            return;
-        }
-        if (this.scheduler.target_date.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
-            this.showFailed('必須項目が入力されていません。');
-            this.isButtonDisabled = false;
-            return;
-        }
-        if (this.scheduler.start_time >= this.scheduler.end_time) {
-            this.showFailed('開始時刻と終了時刻の指定が不正です。');
-            this.isButtonDisabled = false;
-            return;
-        }
-        if (!this.scheduler.target_date.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
-            this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
-            this.isButtonDisabled = false;
-            return;
-        }
-        var start_time = this.scheduler.target_date + ' ' + this.scheduler.start_time;
-        var end_time = this.scheduler.target_date + ' ' + this.scheduler.end_time;
-        axios.put('/api/scheduler/' + this.scheduler.id, {
-            'room_id': this.scheduler.room_id,
-            'start_time': start_time,
-            'end_time': end_time,
-            'user_name': this.scheduler.user_name,
-            'description': this.scheduler.description
-        }).then(function (response) {
-            _this2.showSuccess('登録に成功しました。');
-            location.href = '/';
-        }).catch(function (error) {
-            _this2.showFailed('入力内容に誤りがあります。');
-            _this2.isButtonDisabled = false;
-        });
-    },
-    load: function load() {
-        var _this3 = this;
-
-        axios.get('/api/scheduler/' + this.$route.params.id).then(function (res) {
-            var data = res.data['data'];
-            data.target_date = data.start_time.slice(0, 10);
-            data.start_time = data.start_time.slice(11, 16);
-            data.end_time = data.end_time.slice(11, 16);
-            _this3.scheduler = data;
-            _this3.isButtonDisabled = false;
-        });
-    }
-}), _defineProperty(_mixins$created$data$, 'components', {
-    LoadingComponent: __WEBPACK_IMPORTED_MODULE_1__LoadingComponent_vue___default.a
-}), _mixins$created$data$);
+});
 
 /***/ }),
 /* 67 */
@@ -45776,7 +45927,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "container" }, [
-      _c("h3", [_vm._v("予約登録")]),
+      _c("h3", [_vm._v("予約編集画面")]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _vm._m(0, false, false),
@@ -45824,17 +45975,21 @@ var render = function() {
       _c("div", { staticClass: "form-group" }, [
         _vm._m(1, false, false),
         _vm._v(" "),
-        _c("a", { attrs: { href: "#" }, on: { click: _vm.today } }, [
-          _vm._v("今日")
+        _c("button", { staticClass: "day_button", on: { click: _vm.addDay } }, [
+          _vm._v("+")
         ]),
         _vm._v(" "),
-        _c("a", { attrs: { href: "#" }, on: { click: _vm.tomorrow } }, [
-          _vm._v("明日")
-        ]),
+        _c(
+          "button",
+          { staticClass: "day_button", on: { click: _vm.minusDay } },
+          [_vm._v("-")]
+        ),
         _vm._v(" "),
-        _c("a", { attrs: { href: "#" }, on: { click: _vm.dayAfterTomorrow } }, [
-          _vm._v("明後日")
-        ]),
+        _c(
+          "button",
+          { staticClass: "today_button", on: { click: _vm.today } },
+          [_vm._v("今日")]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "col-xs-5" }, [
           _c("input", {
