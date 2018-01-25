@@ -8,20 +8,15 @@
         border-top-left-radius: 3px;
         border-color: #4582ec;
     }
-    .day_button {
-        width: 30px;
-        border-radius: 5px;
-    }
-    .today_button {
-        width: 50px;
-        border-radius: 5px;
-    }
     .no_result {
         text-align: center;
         color: gray;
     }
     .search_target_day{
-        width: 42%;
+        width: 30%;
+    }
+    .room_padding {
+        padding-top: 16px;
     }
 </style>
 <template>
@@ -37,12 +32,9 @@
             <tbody>
             <tr>
                 <td class="search_target_day">
-                    日付：<input type="text" name="name" style="padding: 2px;" v-model="target_date" placeholder="2018-01-01">
-                    <button class="day_button" @click="addDay">+</button>　
-                    <button class="day_button" @click="minusDay">-</button>　
-                    <button class="today_button" @click="today">今日</button>　
+                    <date-picker :date="target_date" :option="option" :limit="limit" class="data_picker_width"></date-picker>
                 </td>
-                <td>会議室：
+                <td class="room_padding">会議室：
                     <select v-model="room_id" style="height: 28px;">
                         <option v-for="room in roomList" v-bind:value="room.id">{{ room.name }}</option>
                     </select>
@@ -77,22 +69,76 @@
     import LoadingComponent from './LoadingComponent.vue'
     import schedulerComponent from './SchedulerComponent.vue'
     import alertComponent from './mixin/Alert.vue';
+    import myDatepicker from 'vue-datepicker';
     export default {
         mixins: [alertComponent],
         created() {
-            this.today()
             this.showLoading()
             this.load()
             this.getRooms()
+            this.today()
         },
         data() {
             return {
                 isLoading: false,
                 schedulerList: [],
                 roomList:{},
-                target_date: '',
-                room_id: 0
+                room_id: 0,
+                target_date: {
+                    time: ''
+                },
+                endtime: {
+                    time: ''
+                },
+
+                option: {
+                    type: 'day',
+                    week: ['月', '火', '水', '木', '金', '土', '日'],
+                    month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    format: 'YYYY-MM-DD',
+                    placeholder: '日付',
+                    inputStyle: {
+                        'display': 'inline-block',
+                        'padding': '6px',
+                        'line-height': '22px',
+                        'font-size': '16px',
+                        'border': '2px solid #fff',
+                        'box-shadow': '0 1px 3px 0 rgba(0, 0, 0, 0.2)',
+                        'border-radius': '2px',
+                        'color': '#5F5F5F'
+                    },
+                    color: {
+                        header: '#ccc',
+                        headerText: '#888'
+                    },
+                    buttons: {
+                        ok: 'Ok',
+                        cancel: 'Cancel'
+                    },
+                    overlayOpacity: 0.5, // 0.5 as default
+                    dismissible: true // as true as default
+                },
+                timeoption: {
+                    type: 'min',
+                    week: ['月', '火', '水', '木', '金', '土', '日'],
+                    month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],                    format: 'YYYY-MM-DD HH:mm'
+                },
+                multiOption: {
+                    type: 'multi-day',
+                    week: ['月', '火', '水', '木', '金', '土', '日'],
+                    month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],                    format:"YYYY-MM-DD HH:mm"
+                },
+                limit: [{
+                    type: 'weekday',
+                    available: [0, 1, 2, 3, 4, 5, 6]
+                },
+                    {
+                        type: 'fromto',
+                        from: '1970-01-01',
+                        to: '2099-012-31'
+                    }]
             }
+
         },
         methods: {
             showLoading() {
@@ -131,23 +177,11 @@
             },
             setTargetDay(day) {
                 var day = new Date(day);
-                this.target_date = this.getYyyyMmDdStr(day) + '(' + this.getWeekStr(day) + ')';
+                this.target_date.time = this.getYyyyMmDdStr(day);
             },
             today() {
                 var day = new Date();
-                this.target_date = this.getYyyyMmDdStr(day) + '(' + this.getWeekStr(day) + ')';
-            },
-            addDay() {
-                var day = new Date(this.getTargetDayStr());
-                day.setDate(day.getDate() + 1);
-                var yyyymmdd = this.getYyyyMmDdStr(day);
-                this.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
-            },
-            minusDay() {
-                var day = new Date(this.getTargetDayStr());
-                day.setDate(day.getDate() - 1);
-                var yyyymmdd = this.getYyyyMmDdStr(day);
-                this.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
+                this.target_date.time = this.getYyyyMmDdStr(day);
             },
             getRooms() {
                 axios.get('/api/rooms/')
@@ -157,7 +191,7 @@
                 })
             },
             getTargetDayStr() {
-                return this.target_date.slice(0,10);
+                return { time: this.target_date.time.slice(0,10)};
             },
             getWeekStr(day) {
                 return [ "日", "月", "火", "水", "木", "金", "土" ][day.getDay()]
@@ -170,7 +204,8 @@
         },
         components: {
             LoadingComponent,
-            schedulerComponent
+            schedulerComponent,
+            'date-picker': myDatepicker
         }
     }
 </script>
