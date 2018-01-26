@@ -18,6 +18,7 @@ class CreateSchedulersTable extends Migration
             $table->integer('room_id');
             $table->dateTime('start_time')->index();
             $table->dateTime('end_time')->index();
+            $table->string('duplicate_check');
             $table->string('user_name');
             $table->text('description');
             $table->timestamp('deleted_at')->nullable();

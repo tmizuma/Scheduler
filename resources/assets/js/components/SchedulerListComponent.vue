@@ -76,7 +76,7 @@
             this.showLoading()
             this.load()
             this.getRooms()
-            this.today()
+            this.initDay()
         },
         data() {
             return {
@@ -121,12 +121,14 @@
                 timeoption: {
                     type: 'min',
                     week: ['月', '火', '水', '木', '金', '土', '日'],
-                    month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],                    format: 'YYYY-MM-DD HH:mm'
+                    month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    format: 'YYYY-MM-DD HH:mm'
                 },
                 multiOption: {
                     type: 'multi-day',
                     week: ['月', '火', '水', '木', '金', '土', '日'],
-                    month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],                    format:"YYYY-MM-DD HH:mm"
+                    month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    format:"YYYY-MM-DD HH:mm"
                 },
                 limit: [{
                     type: 'weekday',
@@ -136,8 +138,9 @@
                         type: 'fromto',
                         from: '1970-01-01',
                         to: '2099-012-31'
-                    }]
-            }
+                    }
+                ]
+                }
 
         },
         methods: {
@@ -162,14 +165,15 @@
                 }
             },
             search() {
-                if (!this.getTargetDayStr().match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+                var targetDayStr = this.getTargetDayStr();
+                if (!targetDayStr.time.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
                     this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
                     this.isButtonDisabled = false;
                     return;
                 }
                 axios.get('/api/scheduler/', {params:{
                     'room_id': this.room_id,
-                    'target_date': this.getTargetDayStr()
+                    'target_date': targetDayStr.time
                 }}).then((response) => {
                     this.schedulerList = response.data['data']
                     this.isLoading = false
@@ -179,8 +183,12 @@
                 var day = new Date(day);
                 this.target_date.time = this.getYyyyMmDdStr(day);
             },
-            today() {
+            initDay() {
                 var day = new Date();
+                if (this.$route.params.day) {
+                    this.target_date.time = this.$route.params.day;
+                    return;
+                }
                 this.target_date.time = this.getYyyyMmDdStr(day);
             },
             getRooms() {

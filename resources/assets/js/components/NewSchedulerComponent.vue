@@ -2,14 +2,6 @@
     .required {
         color: red;
     }
-    .day_button {
-        width: 30px;
-        border-radius: 5px;
-    }
-    .today_button {
-        width: 50px;
-        border-radius: 5px;
-    }
 </style>
 <template>
 <div class="">
@@ -24,12 +16,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-xs-2">日付<span class="required"> *</span></label>　　
-                <button class="day_button" @click="addDay">+</button>　
-                <button class="day_button" @click="minusDay">-</button>　
-                <button class="today_button" @click="today">今日</button>　
+                <label class="control-label col-xs-2">日付<span class="required"> *</span></label>
                 <div class="col-xs-5">
-                    <input type="text" name="name" v-model="target_date" class="form-control" placeholder="2018-01-01">
+                    <date-picker :date="target_date" :option="option" :limit="limit"></date-picker>
                 </div>
             </div>
             <div class="form-group">
@@ -260,6 +249,7 @@
 </template>
 <script>
     import alertComponent from './mixin/Alert.vue';
+    import myDatepicker from 'vue-datepicker';
     export default {
         mixins: [alertComponent],
         created() {
@@ -269,13 +259,50 @@
         data() {
             return {
                 room_id: 0,
-                target_date: '',
                 start_time: '',
                 end_time: '',
                 user_name: '',
                 description: '',
                 isButtonDisabled: false,
                 roomList: {},
+                target_date: {time:''},
+                option: {
+                    type: 'day',
+                    week: ['月', '火', '水', '木', '金', '土', '日'],
+                    month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    format: 'YYYY-MM-DD',
+                    placeholder: '日付',
+                    inputStyle: {
+                        'display': 'inline-block',
+                        'padding': '6px',
+                        'line-height': '22px',
+                        'font-size': '16px',
+                        'border': '2px solid #fff',
+                        'box-shadow': '0 1px 3px 0 rgba(0, 0, 0, 0.2)',
+                        'border-radius': '2px',
+                        'color': '#5F5F5F'
+                    },
+                    color: {
+                        header: '#ccc',
+                        headerText: '#888'
+                    },
+                    buttons: {
+                        ok: 'Ok',
+                        cancel: 'Cancel'
+                    },
+                    overlayOpacity: 0.5, // 0.5 as default
+                    dismissible: true // as true as default
+                },
+                limit: [{
+                    type: 'weekday',
+                    available: [0, 1, 2, 3, 4, 5, 6]
+                },
+                    {
+                        type: 'fromto',
+                        from: '1970-01-01',
+                        to: '2099-012-31'
+                    }
+                ]
             }
         },
         methods: {
@@ -288,25 +315,7 @@
             },
             today() {
                 var day = new Date();
-                this.target_date = this.getYyyyMmDdStr(day) + '(' + this.getWeekStr(day) + ')';
-            },
-            addDay() {
-                if (this.target_date == '') {
-                    this.today();
-                }
-                var day = new Date(this.getTargetDayStr());
-                day.setDate(day.getDate() + 1);
-                var yyyymmdd = this.getYyyyMmDdStr(day);
-                this.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
-            },
-            minusDay() {
-                if (this.target_date == '') {
-                    this.today();
-                }
-                var day = new Date(this.getTargetDayStr());
-                day.setDate(day.getDate() - 1);
-                var yyyymmdd = this.getYyyyMmDdStr(day);
-                this.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
+                this.target_date.time = this.getYyyyMmDdStr(day);
             },
             postData() {
                 var self = this;
@@ -316,7 +325,7 @@
                     this.isButtonDisabled = false;
                     return;
                 }
-                if (this.target_date.length == 0 || this.start_time.length == 0 || this.end_time.length == 0 || this.user_name.length == 0) {
+                if (this.target_date.time.length == 0 || this.start_time.length == 0 || this.end_time.length == 0 || this.user_name.length == 0) {
                     this.showFailed('必須項目が入力されていません。');
                     this.isButtonDisabled = false;
                     return;
@@ -326,13 +335,14 @@
                     this.isButtonDisabled = false;
                     return;
                 }
-                if (!this.getTargetDayStr().match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+                var targetDayStr = this.getTargetDayStr();
+                if (!targetDayStr.time.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
                     this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
                     this.isButtonDisabled = false;
                     return;
                 }
-                var start_time = this.getTargetDayStr() + ' ' + this.start_time;
-                var end_time = this.getTargetDayStr() + ' ' + this.end_time;
+                var start_time = targetDayStr.time + ' ' + this.start_time;
+                var end_time = targetDayStr.time + ' ' + this.end_time;
                 axios.post('/api/scheduler/', {
                     'room_id': this.room_id,
                     'start_time': start_time,
@@ -347,14 +357,14 @@
                             return;
                         }
                         this.showSuccess('登録に成功しました。');
-                        location.href = '/' + self.getTargetDayStr();
+                        location.href = '/' + self.getTargetDayStr().time;
                     }).catch( error => {
                         this.showFailed('入力内容に誤りがあります。');
                         this.isButtonDisabled = false;
                     });
             },
             getTargetDayStr() {
-                return this.target_date.slice(0,10);
+                return { time: this.target_date.time.slice(0,10)};
             },
             getWeekStr(day) {
                 return [ "日", "月", "火", "水", "木", "金", "土" ][day.getDay()]
@@ -364,6 +374,9 @@
                         ( "0" + ( day.getMonth() + 1 ) ).slice(-2) + '-' +
                         ( "0" + day.getDate() ).slice(-2);
             }
+        },
+        components: {
+            'date-picker': myDatepicker
         }
     }
 </script>

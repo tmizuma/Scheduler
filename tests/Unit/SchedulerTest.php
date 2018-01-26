@@ -160,6 +160,7 @@ class SchedulerTest extends TestCase {
         $scheduler->description = 'test_description';
         $scheduler->start_time = $target_date . ' ' . $start_time;
         $scheduler->end_time = $target_date . ' ' . $end_time;
+        $scheduler->setDuplicateCheckVal();
         $scheduler->save();
         return $scheduler;
     }

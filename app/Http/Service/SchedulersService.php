@@ -32,12 +32,28 @@ class SchedulersService {
 		return $this->schedulersDao->findTargetSchedulersByTargetDateAndRoomId($target_date, $room_id);
 	}
 
-	public function isStartTimeDuplicate($room_id, $start_time, $end_time, $id = null) {
-		return $this->schedulersDao->isStartTimeDuplicate($room_id, $start_time, $end_time, $id);
-	}
-
-	public function isEndTimeDuplicate($room_id, $start_time, $end_time, $id = null) {
-		return $this->schedulersDao->isEndTimeDuplicate($room_id, $start_time, $end_time, $id);
+	/**
+	 * 予定の重複をチェックする
+	 * @param $room_id
+	 * @param $start_time
+	 * @param $end_time
+	 * @param null $id
+	 * @return bool
+	 */
+	public function isDuplicate($room_id, $start_time, $end_time, $id = null) {
+		$targets = $this->schedulersDao->findTargetDayAndRoomIdSchedulers(substr($start_time,0,10), $room_id);
+		$new_val = Scheduler::calculateDuplicateCheckVal(substr($start_time,11,5), substr($end_time,11,5));
+		foreach ($targets as $target) {
+			if ($target->id == $id) {
+				continue;
+			}
+			for($i=0;$i<=count(Scheduler::TIME_ARRAY);$i++) {
+				if (substr($new_val,$i,1) == '1' && substr($new_val,$i,1) == substr($target->duplicate_check,$i,1)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public function findById($id) {
@@ -51,6 +67,7 @@ class SchedulersService {
 		$scheduler->description = $data['description'];
 		$scheduler->start_time = $data['start_time'];
 		$scheduler->end_time = $data['end_time'];
+		$scheduler->setDuplicateCheckVal();
 		$scheduler->updated_at = Carbon::now();
 		$scheduler->save();
 		return $scheduler;

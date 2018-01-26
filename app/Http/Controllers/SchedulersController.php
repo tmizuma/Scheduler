@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Service\SchedulersService;
 use App\Http\Component\StatusCode;
+use App\Scheduler;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -46,18 +47,12 @@ class SchedulersController extends AjaxController {
             'room_id' 		=> ['integer','required']
         ]);
         if (
-            // 開始時間が他の予約と重なってしまっている場合
-            ($this->schedulersService->isStartTimeDuplicate(
+            $this->schedulersService->isDuplicate(
                 $this->request->input('room_id'),
                 $this->request->input('start_time'),
                 $this->request->input('end_time')
-            ) ||
-            // 終了時間が他の予約と重なってしまっている場合
-            ($this->schedulersService->isEndTimeDuplicate(
-                $this->request->input('room_id'),
-                $this->request->input('start_time'),
-                $this->request->input('end_time'))
-        ))) {
+            )
+        ) {
             $this->status = StatusCode::DUPLICATE_SCHEDULE;
             return $this->response();
         }
@@ -65,6 +60,7 @@ class SchedulersController extends AjaxController {
             'room_id' => $this->request->input('room_id'),
             'user_name' => $this->request->input('user_name'),
             'start_time' => $this->request->input('start_time'),
+
             'end_time' => $this->request->input('end_time'),
             'description' => empty($this->request->input('description')) ? '' : $this->request->input('description'),
             'updated_at' => Carbon::now()
@@ -76,27 +72,23 @@ class SchedulersController extends AjaxController {
             'user_name' 	=> ['string'],
             'start_time' 	=> ['string','required'],
             'end_time' 	    => ['string','required'],
-            'room_id' 		=> ['integer','required']
+            'room_id' 		=> ['integer','required'],
         ]);
         if (
-            // 開始時間が他の予約と重なってしまっている場合
-            ($this->schedulersService->isStartTimeDuplicate(
-                $this->request->input('room_id'),
-                $this->request->input('start_time'),
-                $this->request->input('end_time')
-            ) ||
-            // 終了時間が他の予約と重なってしまっている場合
-            ($this->schedulersService->isEndTimeDuplicate(
-                $this->request->input('room_id'),
-                $this->request->input('start_time'),
-                $this->request->input('end_time'))
-        ))) {
+        $this->schedulersService->isDuplicate(
+            $this->request->input('room_id'),
+            $this->request->input('start_time'),
+            $this->request->input('end_time'),
+            $id
+        )
+        ) {
             $this->status = StatusCode::DUPLICATE_SCHEDULE;
             return $this->response();
         }
         $this->schedulersService->updateScheduler($id, [
             'room_id' => $this->request->input('room_id'),
             'user_name' => $this->request->input('user_name'),
+            'duplicate_check' => Scheduler::calculateDuplicateCheckVal(substr($this->request->input('start_time'),11,5), substr($this->request->input('end_time'),11,5)),
             'start_time' => $this->request->input('start_time'),
             'end_time' => $this->request->input('end_time'),
             'description' => empty($this->request->input('description')) ? '' : $this->request->input('description'),

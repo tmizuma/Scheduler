@@ -33,6 +33,21 @@ class SchedulersDao extends BaseDao {
 	/**
 	 * 日付と会議室で絞る
 	 * @param $target_date
+	 * @return \Illuminate\Support\Collection
+	 */
+	public function findTargetDayAndRoomIdSchedulers( $target_date, $room_id ) {
+		$sql = $this->table->select('schedulers.*','rooms.name as room_name')
+			->join('rooms', 'rooms.id', '=', 'schedulers.room_id')
+			->whereBetween('schedulers.start_time', [$target_date . ' 00:00:00', $target_date . ' 23:59:59'])
+			->where('rooms.id', $room_id)
+			->whereNull('rooms.deleted_at')
+			->whereNull('schedulers.deleted_at');
+		return $sql->orderBy('schedulers.start_time')->orderBy('rooms.name')->get();
+	}
+
+	/**
+	 * 日付と会議室で絞る
+	 * @param $target_date
 	 * @param $room_id
 	 * @return \Illuminate\Support\Collection
 	 */
@@ -58,7 +73,8 @@ class SchedulersDao extends BaseDao {
 		if (!empty($id)) {
 			$sql = $sql->where('schedulers.id', '!=', $id);
 		}
-		return $sql->count() != 0;
+		$ret = $sql->count() != 0;
+		return $ret;
 	}
 
 	public function isEndTimeDuplicate($room_id, $start_time, $end_time, $id = null) {
@@ -71,6 +87,7 @@ class SchedulersDao extends BaseDao {
 		if (!empty($id)) {
 			$sql = $sql->where('schedulers.id', '!=', $id);
 		}
-		return $sql->count() != 0;
+		$ret = $sql->count() != 0;
+		return $ret;
 	}
 }

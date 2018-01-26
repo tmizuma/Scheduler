@@ -25,11 +25,8 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2">日付<span class="required"> *</span></label>　　
-                <button class="day_button" @click="addDay">+</button>　
-                <button class="day_button" @click="minusDay">-</button>　
-                <button class="today_button" @click="today">今日</button>　
                 <div class="col-xs-5">
-                    <input type="text" name="name" v-model="scheduler.target_date" class="form-control" placeholder="2018-01-01">
+                    <date-picker :date="scheduler.target_date" :option="option" :limit="limit"></date-picker>
                 </div>
             </div>
             <div class="form-group">
@@ -261,6 +258,7 @@
 <script>
     import alertComponent from './mixin/Alert.vue';
     import LoadingComponent from './LoadingComponent.vue'
+    import myDatepicker from 'vue-datepicker'
     export default {
         mixins: [alertComponent],
         created() {
@@ -269,9 +267,50 @@
         },
         data() {
             return {
-                scheduler: {},
+                scheduler: {
+                    target_date: {
+                        time: ''
+                    }
+                },
                 isButtonDisabled: false,
                 roomList: {},
+                option: {
+                    type: 'day',
+                    week: ['月', '火', '水', '木', '金', '土', '日'],
+                    month: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                    format: 'YYYY-MM-DD',
+                    placeholder: '日付',
+                    inputStyle: {
+                        'display': 'inline-block',
+                        'padding': '6px',
+                        'line-height': '22px',
+                        'font-size': '16px',
+                        'border': '2px solid #fff',
+                        'box-shadow': '0 1px 3px 0 rgba(0, 0, 0, 0.2)',
+                        'border-radius': '2px',
+                        'color': '#5F5F5F'
+                    },
+                    color: {
+                        header: '#ccc',
+                        headerText: '#888'
+                    },
+                    buttons: {
+                        ok: 'Ok',
+                        cancel: 'Cancel'
+                    },
+                    overlayOpacity: 0.5, // 0.5 as default
+                    dismissible: true // as true as default
+                },
+                limit: [{
+                    type: 'weekday',
+                    available: [0, 1, 2, 3, 4, 5, 6]
+                },
+                    {
+                        type: 'fromto',
+                        from: '1970-01-01',
+                        to: '2099-012-31'
+                    }
+                ]
             }
         },
         methods: {
@@ -284,25 +323,7 @@
             },
             today() {
                 var day = new Date();
-                this.scheduler.target_date = this.getYyyyMmDdStr(day) + '(' + this.getWeekStr(day) + ')';
-            },
-            addDay() {
-                if (this.scheduler.target_date == '') {
-                    this.today();
-                }
-                var day = new Date(this.getTargetDayStr());
-                day.setDate(day.getDate() + 1);
-                var yyyymmdd = this.getYyyyMmDdStr(day);
-                this.scheduler.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
-            },
-            minusDay() {
-                if (this.scheduler.target_date == '') {
-                    this.today();
-                }
-                var day = new Date(this.getTargetDayStr());
-                day.setDate(day.getDate() - 1);
-                var yyyymmdd = this.getYyyyMmDdStr(day);
-                this.scheduler.target_date = yyyymmdd + '(' + this.getWeekStr(day) + ')';
+                this.scheduler.target_date.time = this.getYyyyMmDdStr(day);
             },
             postData() {
                 var self = this;
@@ -312,7 +333,7 @@
                     this.isButtonDisabled = false;
                     return;
                 }
-                if (this.scheduler.target_date.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
+                if (this.scheduler.target_date.time.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
                     this.showFailed('必須項目が入力されていません。');
                     this.isButtonDisabled = false;
                     return;
@@ -330,6 +351,7 @@
                 var start_time = this.getTargetDayStr() + ' ' + this.scheduler.start_time;
                 var end_time = this.getTargetDayStr() + ' ' + this.scheduler.end_time;
                 axios.put('/api/scheduler/' + this.scheduler.id, {
+                    'id': this.scheduler.id,
                     'room_id': this.scheduler.room_id,
                     'start_time': start_time,
                     'end_time': end_time,
@@ -349,11 +371,10 @@
             });
             },
             load() {
-                var self = this;
                 axios.get('/api/scheduler/' + this.$route.params.id)
                         .then(res =>  {
                     var data = res.data['data'];
-                    data.target_date = data.start_time.slice(0,10) + '(' + self.getWeekStr(new Date(data.start_time.slice(0,10))) + ')';
+                    data.target_date = {time: data.start_time.slice(0,10)};
                     data.start_time = data.start_time.slice(11,16);
                     data.end_time = data.end_time.slice(11,16);
                     this.scheduler = data;
@@ -361,7 +382,7 @@
                 })
             },
             getTargetDayStr() {
-                return this.scheduler.target_date.slice(0,10);
+                return this.scheduler.target_date.time.slice(0,10);
             },
             getWeekStr(day) {
                 return [ "日", "月", "火", "水", "木", "金", "土" ][day.getDay()]
@@ -373,7 +394,8 @@
             }
         },
         components: {
-            LoadingComponent
+            LoadingComponent,
+            'date-picker': myDatepicker
         }
     }
 </script>
