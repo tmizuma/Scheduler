@@ -59894,6 +59894,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -59913,9 +59918,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             schedulerList: [],
             roomList: {},
             room_id: 0,
-            target_date: {
-                time: ''
-            },
+            // カレンダー対応
+            //                target_date: {
+            //                    time: ''
+            //                },
+            target_date: '',
             endtime: {
                 time: ''
             },
@@ -60011,15 +60018,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         setTargetDay: function setTargetDay(day) {
             var day = new Date(day);
-            this.target_date.time = this.getYyyyMmDdStr(day);
+            this.target_date = this.getYyyyMmDdStr(day);
+            // this.target_date.time = this.getYyyyMmDdStr(day);
         },
         initDay: function initDay() {
             var day = new Date();
             if (this.$route.params.day) {
-                this.target_date.time = this.$route.params.day;
+                this.target_date = this.$route.params.day;
+                // this.target_date.time = this.$route.params.day;
                 return;
             }
-            this.target_date.time = this.getYyyyMmDdStr(day);
+            this.target_date = this.getYyyyMmDdStr(day);
+            // this.target_date.time = this.getYyyyMmDdStr(day);
         },
         getRooms: function getRooms() {
             var _this3 = this;
@@ -60030,7 +60040,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         getTargetDayStr: function getTargetDayStr() {
-            return { time: this.target_date.time.slice(0, 10) };
+            return { time: this.target_date };
+            // return { time: this.target_date.time.slice(0,10)}; //カレンダー対応
         },
         getWeekStr: function getWeekStr(day) {
             return ["日", "月", "火", "水", "木", "金", "土"][day.getDay()];
@@ -61845,21 +61856,33 @@ var render = function() {
         _vm._v(" "),
         _c("tbody", [
           _c("tr", [
-            _c(
-              "td",
-              { staticClass: "search_target_day" },
-              [
-                _c("date-picker", {
-                  staticClass: "data_picker_width",
-                  attrs: {
-                    date: _vm.target_date,
-                    option: _vm.option,
-                    limit: _vm.limit
+            _c("div", { staticClass: "search_target_day" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.target_date,
+                    expression: "target_date"
                   }
-                })
-              ],
-              1
-            ),
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  name: "name",
+                  placeholder: "例) 2018-04-01"
+                },
+                domProps: { value: _vm.target_date },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.target_date = $event.target.value
+                  }
+                }
+              })
+            ]),
             _vm._v(" "),
             _c("td", { staticClass: "room_padding" }, [
               _vm._v("会議室：\n                    "),
@@ -62346,6 +62369,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -62364,7 +62392,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             description: '',
             isButtonDisabled: false,
             roomList: {},
-            target_date: { time: '' },
+            //                カレンダー対応
+            //                target_date: {time:''},
+            target_date: '',
             option: {
                 type: 'day',
                 week: ['月', '火', '水', '木', '金', '土', '日'],
@@ -62414,7 +62444,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         today: function today() {
             var day = new Date();
-            this.target_date.time = this.getYyyyMmDdStr(day);
+            // カレンダー対応
+            // this.target_date.time = this.getYyyyMmDdStr(day);
+            this.target_date = this.getYyyyMmDdStr(day);
         },
         postData: function postData() {
             var _this2 = this;
@@ -62426,7 +62458,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.isButtonDisabled = false;
                 return;
             }
-            if (this.target_date.time.length == 0 || this.start_time.length == 0 || this.end_time.length == 0 || this.user_name.length == 0) {
+            if (this.target_date.length == 0 || this.start_time.length == 0 || this.end_time.length == 0 || this.user_name.length == 0) {
                 this.showFailed('必須項目が入力されていません。');
                 this.isButtonDisabled = false;
                 return;
@@ -62436,6 +62468,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.isButtonDisabled = false;
                 return;
             }
+            // カレンダー対応
             var targetDayStr = this.getTargetDayStr();
             if (!targetDayStr.time.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
                 this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
@@ -62464,13 +62497,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         getTargetDayStr: function getTargetDayStr() {
-            return { time: this.target_date.time.slice(0, 10) };
+            return { time: this.target_date };
+            // return { time: this.target_date.time.slice(0,10)}; //カレンダー対応
         },
         getWeekStr: function getWeekStr(day) {
             return ["日", "月", "火", "水", "木", "金", "土"][day.getDay()];
         },
         getYyyyMmDdStr: function getYyyyMmDdStr(day) {
             return day.getFullYear() + '-' + ("0" + (day.getMonth() + 1)).slice(-2) + '-' + ("0" + day.getDate()).slice(-2);
+        },
+        isSmartPhone: function isSmartPhone() {
+            var ua = navigator.userAgent;
+            if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0 || ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+                return true;
+            }
+            return false;
         }
     },
     components: {
@@ -62534,20 +62575,33 @@ var render = function() {
       _c("div", { staticClass: "form-group" }, [
         _vm._m(1, false, false),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-xs-5" },
-          [
-            _c("date-picker", {
-              attrs: {
-                date: _vm.target_date,
-                option: _vm.option,
-                limit: _vm.limit
+        _c("div", { staticClass: "col-xs-5" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.target_date,
+                expression: "target_date"
               }
-            })
-          ],
-          1
-        )
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              name: "name",
+              placeholder: "例) 2018-04-01"
+            },
+            domProps: { value: _vm.target_date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.target_date = $event.target.value
+              }
+            }
+          })
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
@@ -63510,6 +63564,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -63578,7 +63637,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         today: function today() {
             var day = new Date();
-            this.scheduler.target_date.time = this.getYyyyMmDdStr(day);
+            this.scheduler.target_date = this.getYyyyMmDdStr(day);
+            // this.scheduler.target_date.time = this.getYyyyMmDdStr(day);
         },
         postData: function postData() {
             var _this2 = this;
@@ -63590,7 +63650,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.isButtonDisabled = false;
                 return;
             }
-            if (this.scheduler.target_date.time.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
+            if (this.scheduler.target_date.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
                 this.showFailed('必須項目が入力されていません。');
                 this.isButtonDisabled = false;
                 return;
@@ -63640,7 +63700,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         getTargetDayStr: function getTargetDayStr() {
-            return this.scheduler.target_date.time.slice(0, 10);
+            return this.scheduler.target_date.time;
+            // return { time: this.target_date.time.slice(0,10)}; //カレンダー対応
         },
         getWeekStr: function getWeekStr(day) {
             return ["日", "月", "火", "水", "木", "金", "土"][day.getDay()];
@@ -63713,20 +63774,33 @@ var render = function() {
       _c("div", { staticClass: "form-group" }, [
         _vm._m(1, false, false),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-xs-5" },
-          [
-            _c("date-picker", {
-              attrs: {
-                date: _vm.scheduler.target_date,
-                option: _vm.option,
-                limit: _vm.limit
+        _c("div", { staticClass: "col-xs-5" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.scheduler.target_date.time,
+                expression: "scheduler.target_date.time"
               }
-            })
-          ],
-          1
-        )
+            ],
+            staticClass: "form-control",
+            attrs: {
+              type: "text",
+              name: "name",
+              placeholder: "例) 2018-04-01"
+            },
+            domProps: { value: _vm.scheduler.target_date.time },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.scheduler.target_date, "time", $event.target.value)
+              }
+            }
+          })
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [

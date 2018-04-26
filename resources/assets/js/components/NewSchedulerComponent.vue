@@ -17,8 +17,13 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2">日付<span class="required"> *</span></label>
-                <div class="col-xs-5">
+                <!-- カレンダー対応
+                <div class="col-xs-5" v-if="">
                     <date-picker :date="target_date" :option="option" :limit="limit"></date-picker>
+                </div>
+                -->
+                <div class="col-xs-5">
+                    <input type="text" name="name" v-model="target_date" class="form-control" placeholder="例) 2018-04-01">
                 </div>
             </div>
             <div class="form-group">
@@ -265,7 +270,9 @@
                 description: '',
                 isButtonDisabled: false,
                 roomList: {},
-                target_date: {time:''},
+//                カレンダー対応
+//                target_date: {time:''},
+                target_date: '',
                 option: {
                     type: 'day',
                     week: ['月', '火', '水', '木', '金', '土', '日'],
@@ -315,7 +322,9 @@
             },
             today() {
                 var day = new Date();
-                this.target_date.time = this.getYyyyMmDdStr(day);
+                // カレンダー対応
+                // this.target_date.time = this.getYyyyMmDdStr(day);
+                this.target_date = this.getYyyyMmDdStr(day);
             },
             postData() {
                 var self = this;
@@ -325,7 +334,7 @@
                     this.isButtonDisabled = false;
                     return;
                 }
-                if (this.target_date.time.length == 0 || this.start_time.length == 0 || this.end_time.length == 0 || this.user_name.length == 0) {
+                if (this.target_date.length == 0 || this.start_time.length == 0 || this.end_time.length == 0 || this.user_name.length == 0) {
                     this.showFailed('必須項目が入力されていません。');
                     this.isButtonDisabled = false;
                     return;
@@ -335,6 +344,7 @@
                     this.isButtonDisabled = false;
                     return;
                 }
+                // カレンダー対応
                 var targetDayStr = this.getTargetDayStr();
                 if (!targetDayStr.time.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
                     this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
@@ -364,7 +374,8 @@
                     });
             },
             getTargetDayStr() {
-                return { time: this.target_date.time.slice(0,10)};
+                return { time: this.target_date };
+                // return { time: this.target_date.time.slice(0,10)}; //カレンダー対応
             },
             getWeekStr(day) {
                 return [ "日", "月", "火", "水", "木", "金", "土" ][day.getDay()]
@@ -373,6 +384,13 @@
                 return day.getFullYear() + '-' +
                         ( "0" + ( day.getMonth() + 1 ) ).slice(-2) + '-' +
                         ( "0" + day.getDate() ).slice(-2);
+            },
+            isSmartPhone() {
+                var ua = navigator.userAgent;
+                if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0 || ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0){
+                    return true;
+                }
+                return false;
             }
         },
         components: {

@@ -25,8 +25,13 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2">日付<span class="required"> *</span></label>　　
+                <!-- カレンダー対応
                 <div class="col-xs-5">
                     <date-picker :date="scheduler.target_date" :option="option" :limit="limit"></date-picker>
+                </div>
+                -->
+                <div class="col-xs-5">
+                    <input type="text" name="name" v-model="scheduler.target_date.time" class="form-control" placeholder="例) 2018-04-01">
                 </div>
             </div>
             <div class="form-group">
@@ -323,7 +328,8 @@
             },
             today() {
                 var day = new Date();
-                this.scheduler.target_date.time = this.getYyyyMmDdStr(day);
+                this.scheduler.target_date = this.getYyyyMmDdStr(day);
+                // this.scheduler.target_date.time = this.getYyyyMmDdStr(day);
             },
             postData() {
                 var self = this;
@@ -333,7 +339,7 @@
                     this.isButtonDisabled = false;
                     return;
                 }
-                if (this.scheduler.target_date.time.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
+                if (this.scheduler.target_date.length == 0 || this.scheduler.start_time.length == 0 || this.scheduler.end_time.length == 0 || this.scheduler.user_name.length == 0) {
                     this.showFailed('必須項目が入力されていません。');
                     this.isButtonDisabled = false;
                     return;
@@ -382,7 +388,8 @@
                 })
             },
             getTargetDayStr() {
-                return this.scheduler.target_date.time.slice(0,10);
+                return this.scheduler.target_date.time;
+                // return { time: this.target_date.time.slice(0,10)}; //カレンダー対応
             },
             getWeekStr(day) {
                 return [ "日", "月", "火", "水", "木", "金", "土" ][day.getDay()]

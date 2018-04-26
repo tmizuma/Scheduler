@@ -31,9 +31,14 @@
             </thead>
             <tbody>
             <tr>
+                <!-- カレンダー対応
                 <td class="search_target_day">
                     <date-picker :date="target_date" :option="option" :limit="limit" class="data_picker_width"></date-picker>
                 </td>
+                -->
+                <div class="search_target_day">
+                    <input type="text" name="name" v-model="target_date" class="form-control" placeholder="例) 2018-04-01">
+                </div>
                 <td class="room_padding">会議室：
                     <select v-model="room_id" style="height: 28px;">
                         <option v-for="room in roomList" v-bind:value="room.id">{{ room.name }}</option>
@@ -84,9 +89,11 @@
                 schedulerList: [],
                 roomList:{},
                 room_id: 0,
-                target_date: {
-                    time: ''
-                },
+                // カレンダー対応
+//                target_date: {
+//                    time: ''
+//                },
+                target_date: '',
                 endtime: {
                     time: ''
                 },
@@ -181,15 +188,18 @@
             },
             setTargetDay(day) {
                 var day = new Date(day);
-                this.target_date.time = this.getYyyyMmDdStr(day);
+                this.target_date = this.getYyyyMmDdStr(day);
+                // this.target_date.time = this.getYyyyMmDdStr(day);
             },
             initDay() {
                 var day = new Date();
                 if (this.$route.params.day) {
-                    this.target_date.time = this.$route.params.day;
+                    this.target_date = this.$route.params.day;
+                    // this.target_date.time = this.$route.params.day;
                     return;
                 }
-                this.target_date.time = this.getYyyyMmDdStr(day);
+                this.target_date = this.getYyyyMmDdStr(day);
+                // this.target_date.time = this.getYyyyMmDdStr(day);
             },
             getRooms() {
                 axios.get('/api/rooms/')
@@ -199,7 +209,8 @@
                 })
             },
             getTargetDayStr() {
-                return { time: this.target_date.time.slice(0,10)};
+                return { time: this.target_date };
+                // return { time: this.target_date.time.slice(0,10)}; //カレンダー対応
             },
             getWeekStr(day) {
                 return [ "日", "月", "火", "水", "木", "金", "土" ][day.getDay()]
