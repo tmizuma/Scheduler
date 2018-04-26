@@ -14,6 +14,7 @@
     }
     .search_target_day{
         width: 30%;
+        min-width: 130px;
     }
     .room_padding {
         padding-top: 16px;
@@ -36,7 +37,7 @@
                     <date-picker :date="target_date" :option="option" :limit="limit" class="data_picker_width"></date-picker>
                 </td>
                 -->
-                <div class="search_target_day" style="min-width: 130px;">
+                <div class="search_target_day">
                     <input type="text" name="name" v-model="target_date" class="form-control" placeholder="例) 2018-04-01">
                 </div>
                 <td class="room_padding">会議室：
