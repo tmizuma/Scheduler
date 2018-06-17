@@ -152,27 +152,17 @@
             },
             load() {
                 var self = this
-                if (this.$route.params.day) {
-                    this.setTargetDay(this.$route.params.day);
-                    $.ajax({
-                        type: "GET",
-                        data: {
-                            'target_date': self.$route.params.day
-                        },
-                        url: '/api/scheduler/'
-                    }).done(function (res) {
-                        self.schedulerList = res.data
-                        self.isLoading = false
-                    });
-                } else {
-                    $.ajax({
-                        type: "GET",
-                        url: '/api/scheduler/'
-                    }).done(function (res) {
-                        self.schedulerList = res.data
-                        self.isLoading = false
-                    });
-                }
+                this.setTargetDay(this.$route.params.day);
+                $.ajax({
+                    type: "GET",
+                    data: {
+                        'target_date': self.target_date
+                    },
+                    url: '/api/scheduler/'
+                }).done(function (res) {
+                    self.schedulerList = res.data
+                    self.isLoading = false
+                });
             },
             search() {
                 var self = this
@@ -195,19 +185,19 @@
                 });
             },
             setTargetDay(day) {
-                var day = new Date(day);
-                this.target_date = this.getYyyyMmDdStr(day);
-                // this.target_date.time = this.getYyyyMmDdStr(day);
+                if (!day) {
+                    this.target_date = this.getYyyyMmDdStr(new Date());
+                } else {
+                    this.target_date = this.getYyyyMmDdStr(new Date(day));
+                }
             },
             initDay() {
                 var day = new Date();
                 if (this.$route.params.day) {
                     this.target_date = this.$route.params.day;
-                    // this.target_date.time = this.$route.params.day;
                     return;
                 }
                 this.target_date = this.getYyyyMmDdStr(day);
-                // this.target_date.time = this.getYyyyMmDdStr(day);
             },
             getRooms() {
                 var self = this

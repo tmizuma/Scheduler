@@ -107618,27 +107618,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         load: function load() {
             var self = this;
-            if (this.$route.params.day) {
-                this.setTargetDay(this.$route.params.day);
-                $.ajax({
-                    type: "GET",
-                    data: {
-                        'target_date': self.$route.params.day
-                    },
-                    url: '/api/scheduler/'
-                }).done(function (res) {
-                    self.schedulerList = res.data;
-                    self.isLoading = false;
-                });
-            } else {
-                $.ajax({
-                    type: "GET",
-                    url: '/api/scheduler/'
-                }).done(function (res) {
-                    self.schedulerList = res.data;
-                    self.isLoading = false;
-                });
-            }
+            this.setTargetDay(this.$route.params.day);
+            $.ajax({
+                type: "GET",
+                data: {
+                    'target_date': self.target_date
+                },
+                url: '/api/scheduler/'
+            }).done(function (res) {
+                self.schedulerList = res.data;
+                self.isLoading = false;
+            });
         },
         search: function search() {
             var self = this;
@@ -107661,19 +107651,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         setTargetDay: function setTargetDay(day) {
-            var day = new Date(day);
-            this.target_date = this.getYyyyMmDdStr(day);
-            // this.target_date.time = this.getYyyyMmDdStr(day);
+            if (!day) {
+                this.target_date = this.getYyyyMmDdStr(new Date());
+            } else {
+                this.target_date = this.getYyyyMmDdStr(new Date(day));
+            }
         },
         initDay: function initDay() {
             var day = new Date();
             if (this.$route.params.day) {
                 this.target_date = this.$route.params.day;
-                // this.target_date.time = this.$route.params.day;
                 return;
             }
             this.target_date = this.getYyyyMmDdStr(day);
-            // this.target_date.time = this.getYyyyMmDdStr(day);
         },
         getRooms: function getRooms() {
             var self = this;
@@ -107684,11 +107674,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 self.roomList = res['data'];
                 self.isLoading = false;
             });
-            //                axios.get('/api/rooms/')
-            //                        .then(response =>  {
-            //                    this.roomList = response.data['data']
-            //                    this.isLoading = false
-            //                })
         },
         getTargetDayStr: function getTargetDayStr() {
             if (!this.target_date) {
@@ -107906,12 +107891,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var self = this;
             this.isShow = false;
             var id = this.scheduler.id;
-            //                axios.delete('/api/scheduler/' + id).then(
-            //                    (response) => {
-            //                        this.showSuccess('削除が完了しました。');
-            //                    }).catch( error => {
-            //                        this.showFailed('削除に失敗しました。');
-            //                    });
             $.ajax({
                 type: "DELETE",
                 url: '/api/scheduler/' + id
@@ -110081,11 +110060,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         getRooms: function getRooms() {
-            //                axios.get('/api/rooms/')
-            //                        .then(res =>  {
-            //                    this.roomList = res.data['data']
-            //                    this.isLoading = false
-            //                })
             var self = this;
             $.ajax({
                 type: "GET",
@@ -110147,26 +110121,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 res.showFailed('入力内容に誤りがあります。');
                 res.isButtonDisabled = false;
             });
-            //
-            //                axios.post('/api/scheduler/', {
-            //                    'room_id': this.room_id,
-            //                    'start_time': start_time,
-            //                    'end_time': end_time,
-            //                    'user_name': this.user_name,
-            //                    'description': this.description,
-            //                }).then(
-            //                    (response) => {
-            //                        if (response.status == 220) {
-            //                            this.showFailed('他の予定と重複しています。');
-            //                            this.isButtonDisabled = false;
-            //                            return;
-            //                        }
-            //                        this.showSuccess('登録に成功しました。');
-            //                        location.href = '/' + self.getTargetDayStr();
-            //                    }).catch( error => {
-            //                        this.showFailed('入力内容に誤りがあります。');
-            //                        this.isButtonDisabled = false;
-            //                    });
         },
         getTargetDayStr: function getTargetDayStr() {
             return this.getYyyyMmDdStr(this.target_date);
@@ -111294,11 +111248,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 self.roomList = res['data'];
                 self.isLoading = false;
             });
-            //                axios.get('/api/rooms/')
-            //                        .then(res =>  {
-            //                    this.roomList = res.data['data']
-            //                this.isLoading = false
-            //            })
         },
         today: function today() {
             var day = new Date();
@@ -111352,37 +111301,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 self.showFailed('入力内容に誤りがあります。');
                 self.isButtonDisabled = false;
             });
-            //                axios.put('/api/scheduler/' + this.scheduler.id, {
-            //                    'id': this.scheduler.id,
-            //                    'room_id': this.scheduler.room_id,
-            //                    'start_time': start_time,
-            //                    'end_time': end_time,
-            //                    'user_name': this.scheduler.user_name,
-            //                    'description': this.scheduler.description,
-            //                }).then((response) => {
-            //                    if (response.status == 220) {
-            //                        this.showFailed('他の予定と重複しています。');
-            //                        this.isButtonDisabled = false;
-            //                        return;
-            //                    }
-            //                    this.showSuccess('登録に成功しました。');
-            //                    location.href = '/' + self.getTargetDayStr();
-            //                }).catch( error => {
-            //                    this.showFailed('入力内容に誤りがあります。');
-            //                this.isButtonDisabled = false;
-            //            });
         },
         load: function load() {
             var self = this;
-            //                axios.get('/api/scheduler/' + this.$route.params.id)
-            //                        .then(res =>  {
-            //                    var data = res.data['data'];
-            //                    data.target_date = new Date(data.start_time.slice(0,10));
-            //                    data.start_time = data.start_time.slice(11,16);
-            //                    data.end_time = data.end_time.slice(11,16);
-            //                    this.scheduler = data;
-            //                    this.isButtonDisabled = false
-            //                })
+
             $.ajax({
                 type: "GET",
                 url: '/api/scheduler/' + self.$route.params.id
