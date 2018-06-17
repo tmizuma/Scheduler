@@ -10,7 +10,6 @@
    </div>
  </div>
 -->
-
 <div class="container index">
   <div class="row height_100">
    <div class="col-sm-2 color_admin_left text-white">

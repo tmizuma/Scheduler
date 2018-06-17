@@ -25,13 +25,12 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2">日付<span class="required"> *</span></label>　　
-                <!-- カレンダー対応
                 <div class="col-xs-5">
-                    <date-picker :date="scheduler.target_date" :option="option" :limit="limit"></date-picker>
-                </div>
-                -->
-                <div class="col-xs-5">
-                    <input type="text" name="name" v-model="scheduler.target_date.time" class="form-control" placeholder="例) 2018-04-01">
+                    <el-date-picker
+                            v-model="scheduler.target_date"
+                            type="date"
+                            placeholder="日付を選んでください">
+                    </el-date-picker>
                 </div>
             </div>
             <div class="form-group">
@@ -273,9 +272,7 @@
         data() {
             return {
                 scheduler: {
-                    target_date: {
-                        time: ''
-                    }
+                    target_date: null
                 },
                 isButtonDisabled: false,
                 roomList: {},
@@ -320,16 +317,18 @@
         },
         methods: {
             getRooms() {
-                axios.get('/api/rooms/')
-                        .then(res =>  {
-                    this.roomList = res.data['data']
-                this.isLoading = false
-            })
+                var self = this
+                $.ajax({
+                    type: "GET",
+                    url: '/api/rooms/'
+                }).done(function (res) {
+                    self.roomList = res['data']
+                    self.isLoading = false
+                });
             },
             today() {
                 var day = new Date();
                 this.scheduler.target_date = this.getYyyyMmDdStr(day);
-                // this.scheduler.target_date.time = this.getYyyyMmDdStr(day);
             },
             postData() {
                 var self = this;
@@ -356,40 +355,49 @@
                 }
                 var start_time = this.getTargetDayStr() + ' ' + this.scheduler.start_time;
                 var end_time = this.getTargetDayStr() + ' ' + this.scheduler.end_time;
-                axios.put('/api/scheduler/' + this.scheduler.id, {
-                    'id': this.scheduler.id,
-                    'room_id': this.scheduler.room_id,
-                    'start_time': start_time,
-                    'end_time': end_time,
-                    'user_name': this.scheduler.user_name,
-                    'description': this.scheduler.description,
-                }).then((response) => {
-                    if (response.status == 220) {
-                        this.showFailed('他の予定と重複しています。');
-                        this.isButtonDisabled = false;
+                $.ajax({
+                    type: "PUT",
+                    url: '/api/scheduler/' + self.scheduler.id,
+                    data: {
+                        'id': self.scheduler.id,
+                        'room_id': self.scheduler.room_id,
+                        'start_time': start_time,
+                        'end_time': end_time,
+                        'user_name': self.scheduler.user_name,
+                        'description': self.scheduler.description,
+                    }
+                }).done(function (res) {
+                    if (res.status == 220) {
+                        self.showFailed('他の予定と重複しています。');
+                        self.isButtonDisabled = false;
                         return;
                     }
-                    this.showSuccess('登録に成功しました。');
+                    self.showSuccess('登録に成功しました。');
                     location.href = '/' + self.getTargetDayStr();
-                }).catch( error => {
-                    this.showFailed('入力内容に誤りがあります。');
-                this.isButtonDisabled = false;
-            });
+                }).fail(function (res) {
+                    self.showFailed('入力内容に誤りがあります。');
+                    self.isButtonDisabled = false;
+                });
             },
             load() {
-                axios.get('/api/scheduler/' + this.$route.params.id)
-                        .then(res =>  {
-                    var data = res.data['data'];
-                    data.target_date = {time: data.start_time.slice(0,10)};
+                var self = this;
+
+                $.ajax({
+                    type: "GET",
+                    url: '/api/scheduler/' + self.$route.params.id,
+                }).done(function (res) {
+                    var data = res['data'];
+                    data.target_date = new Date(data.start_time.slice(0,10));
                     data.start_time = data.start_time.slice(11,16);
                     data.end_time = data.end_time.slice(11,16);
-                    this.scheduler = data;
-                    this.isButtonDisabled = false
-                })
+                    self.scheduler = data;
+                    self.isButtonDisabled = false
+                }).fail(function (res) {
+
+                });
             },
             getTargetDayStr() {
-                return this.scheduler.target_date.time;
-                // return { time: this.target_date.time.slice(0,10)}; //カレンダー対応
+                return this.getYyyyMmDdStr(this.scheduler.target_date);
             },
             getWeekStr(day) {
                 return [ "日", "月", "火", "水", "木", "金", "土" ][day.getDay()]
@@ -398,7 +406,7 @@
                 return day.getFullYear() + '-' +
                         ( "0" + ( day.getMonth() + 1 ) ).slice(-2) + '-' +
                         ( "0" + day.getDate() ).slice(-2);
-            }
+            },
         },
         components: {
             LoadingComponent,

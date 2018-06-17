@@ -27,14 +27,17 @@
                 if (!window.confirm('削除してもよろしいですか？')) {
                     return;
                 }
+                var self = this
                 this.isShow = false;
                 var id = this.scheduler.id;
-                axios.delete('/api/scheduler/' + id).then(
-                    (response) => {
-                        this.showSuccess('削除が完了しました。');
-                    }).catch( error => {
-                        this.showFailed('削除に失敗しました。');
-                    });
+                $.ajax({
+                    type: "DELETE",
+                    url: '/api/scheduler/' + id
+                }).done(function (res) {
+                    self.showSuccess('削除が完了しました。');
+                }).fail(function(res) {
+                    self.showFailed('削除に失敗しました。');
+                });
             }
         }
     }

@@ -17,13 +17,12 @@
             </div>
             <div class="form-group">
                 <label class="control-label col-xs-2">日付<span class="required"> *</span></label>
-                <!-- カレンダー対応
-                <div class="col-xs-5" v-if="">
-                    <date-picker :date="target_date" :option="option" :limit="limit"></date-picker>
-                </div>
-                -->
                 <div class="col-xs-5">
-                    <input type="text" name="name" v-model="target_date" class="form-control" placeholder="例) 2018-04-01">
+                    <el-date-picker
+                            v-model="target_date"
+                            type="date"
+                            placeholder="日付を選んでください">
+                    </el-date-picker>
                 </div>
             </div>
             <div class="form-group">
@@ -260,6 +259,7 @@
         created() {
             this.getRooms()
             this.today()
+            this.target_date = null
         },
         data() {
             return {
@@ -269,10 +269,8 @@
                 user_name: '',
                 description: '',
                 isButtonDisabled: false,
+                target_date: null,
                 roomList: {},
-//                カレンダー対応
-//                target_date: {time:''},
-                target_date: '',
                 option: {
                     type: 'day',
                     week: ['月', '火', '水', '木', '金', '土', '日'],
@@ -314,17 +312,17 @@
         },
         methods: {
             getRooms() {
-                axios.get('/api/rooms/')
-                        .then(res =>  {
-                    this.roomList = res.data['data']
-                    this.isLoading = false
-                })
+                var self = this
+                $.ajax({
+                    type: "GET",
+                    url: '/api/rooms/'
+                }).done(function (res) {
+                    self.roomList = res['data']
+                    self.isLoading = false
+                });
             },
             today() {
-                var day = new Date();
-                // カレンダー対応
-                // this.target_date.time = this.getYyyyMmDdStr(day);
-                this.target_date = this.getYyyyMmDdStr(day);
+                this.target_date = this.getYyyyMmDdStr(new Date());
             },
             postData() {
                 var self = this;
@@ -346,36 +344,38 @@
                 }
                 // カレンダー対応
                 var targetDayStr = this.getTargetDayStr();
-                if (!targetDayStr.time.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
+                if (!targetDayStr.match(/^\d{4}\-\d{2}\-\d{2}$/)) {
                     this.showFailed('日付の値が不正です。2018-01-01の形式で入力してください。');
                     this.isButtonDisabled = false;
                     return;
                 }
-                var start_time = targetDayStr.time + ' ' + this.start_time;
-                var end_time = targetDayStr.time + ' ' + this.end_time;
-                axios.post('/api/scheduler/', {
-                    'room_id': this.room_id,
-                    'start_time': start_time,
-                    'end_time': end_time,
-                    'user_name': this.user_name,
-                    'description': this.description,
-                }).then(
-                    (response) => {
-                        if (response.status == 220) {
-                            this.showFailed('他の予定と重複しています。');
-                            this.isButtonDisabled = false;
-                            return;
-                        }
-                        this.showSuccess('登録に成功しました。');
-                        location.href = '/' + self.getTargetDayStr().time;
-                    }).catch( error => {
-                        this.showFailed('入力内容に誤りがあります。');
-                        this.isButtonDisabled = false;
-                    });
+                var start_time = targetDayStr + ' ' + this.start_time;
+                var end_time = targetDayStr + ' ' + this.end_time;
+                $.ajax({
+                    type: "POST",
+                    data: {
+                        'room_id': self.room_id,
+                        'start_time': start_time,
+                        'end_time': end_time,
+                        'user_name': self.user_name,
+                        'description': self.description,
+                    },
+                    url: '/api/scheduler/'
+                }).done(function (res) {
+                    if (res.status == 220) {
+                        self.showFailed('他の予定と重複しています。');
+                        self.isButtonDisabled = false;
+                        return;
+                    }
+                    self.showSuccess('登録に成功しました。');
+                    location.href = '/' + self.getTargetDayStr();
+                }).fail(function(res){
+                    res.showFailed('入力内容に誤りがあります。');
+                    res.isButtonDisabled = false;
+                });
             },
             getTargetDayStr() {
-                return { time: this.target_date };
-                // return { time: this.target_date.time.slice(0,10)}; //カレンダー対応
+                return this.getYyyyMmDdStr(this.target_date);
             },
             getWeekStr(day) {
                 return [ "日", "月", "火", "水", "木", "金", "土" ][day.getDay()]
